@@ -56,6 +56,10 @@ export class PostgresDatabaseAdapter
             max: 20,
             idleTimeoutMillis: 30000,
             connectionTimeoutMillis: this.connectionTimeout,
+            ssl: {
+                rejectUnauthorized: false,
+                // ca: fs.readFileSync(connectionConfig.ssl.ca),
+            },
         };
 
         this.pool = new pg.Pool({

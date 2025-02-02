@@ -53,6 +53,7 @@ import { footballPlugin } from "@elizaos/plugin-football";
 
 import { bootstrapPlugin } from "@elizaos/plugin-bootstrap";
 import { salesPlugin } from "@elizaos/plugin-sales";
+import { insightsPlugin } from "@elizaos/plugin-insights";
 
 import { normalizeCharacter } from "@elizaos/plugin-di";
 import createGoatPlugin from "@elizaos/plugin-goat";
@@ -1034,6 +1035,7 @@ export async function createAgent(
                 : null,
             bootstrapPlugin,
             salesPlugin,
+            insightsPlugin,
             getSecret(character, "CDP_API_KEY_NAME") &&
             getSecret(character, "CDP_API_KEY_PRIVATE_KEY") &&
             getSecret(character, "CDP_AGENT_KIT_NETWORK")

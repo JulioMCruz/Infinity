@@ -142,7 +142,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import yargs from "yargs";
 import { emailPlugin } from "@elizaos/plugin-email";
-// import { emailAutomationPlugin } from "@elizaos/plugin-email-automation";
+import { emailAutomationPlugin } from "@elizaos/plugin-email-automation";
 import { seiPlugin } from "@elizaos/plugin-sei";
 import { udioPlugin } from "@elizaos/plugin-udio";
 import { imgflipPlugin } from "@elizaos/plugin-imgflip";
@@ -151,7 +151,7 @@ import { zerionPlugin } from "@elizaos/plugin-zerion";
 import { minaPlugin } from "@elizaos/plugin-mina";
 import { ankrPlugin } from "@elizaos/plugin-ankr";
 import { formPlugin } from "@elizaos/plugin-form";
-// import { MongoClient } from "mongodb";
+import { MongoClient } from "mongodb";
 import { quickIntelPlugin } from "@elizaos/plugin-quick-intel";
 
 import { trikonPlugin } from "@elizaos/plugin-trikon";

@@ -10,7 +10,7 @@ import {
     type State,
 } from "@elizaos/core";
 
-import { createEthAgenticService } from "../services";
+import { createSalesService } from "../services";
 import { getSalesTemplate } from "../templates";
 import { validateEthAgenticConfig } from "../environment";
 import { getSalesExamples } from "../examples";
@@ -76,7 +76,7 @@ export const getSalesAction: Action = {
             elizaLogger.debug("🔵 Configuración validada:", config);
 
             elizaLogger.debug("🔵 Creando servicio de ventas");
-            const salesService = createEthAgenticService(config.baseUrl);
+            const salesService = createSalesService(config.baseUrl);
 
             // Fetch sales data
             elizaLogger.debug("🔵 Obteniendo datos de ventas");

@@ -1,4 +1,4 @@
-import { IEthAgenticRepository, Sale, Insight } from "@Domain/adapters/eth.types";
+import { IEthAgenticRepository, Sale, Insight } from "@Src/presentation/EthAgentic/eth.types";
 
 export class EthAgenticRepository implements IEthAgenticRepository {
   async getSales(): Promise<Sale[]> {

@@ -5,14 +5,6 @@ export interface Sale {
   product: string;
 }
 
-export interface Insight {
-  id: string;
-  metric: string;
-  value: number;
-  trend: 'up' | 'down' | 'stable';
-  percentage: number;
-}
-
 export interface ApiResponse<T> {
   success: boolean;
   data?: T[];
@@ -24,4 +16,3 @@ export interface EthAgenticConfig {
 }
 
 export interface GetSalesResponse extends ApiResponse<Sale> {}
-export interface GetInsightsResponse extends ApiResponse<Insight> {}

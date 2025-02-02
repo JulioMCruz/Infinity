@@ -1,6 +1,5 @@
 import axios from 'axios';
-import { elizaLogger } from "@elizaos/core";
-import { EthAgenticConfig, GetSalesResponse, GetInsightsResponse } from './types';
+import { EthAgenticConfig, GetSalesResponse } from './types';
 
 export const createSalesService = (baseUrl: string) => new SalesService({ baseUrl });
 
@@ -29,24 +28,6 @@ class SalesService {
       return {
         success: false,
         error: 'Unknown error occurred while fetching sales data'
-      };
-    }
-  }
-
-  async getInsights(): Promise<GetInsightsResponse> {
-    try {
-      const response = await axios.get<GetInsightsResponse>(this.getApiUrl('insights'));
-      return response.data;
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        return {
-          success: false,
-          error: error.response?.data?.error || 'Error fetching insights data'
-        };
-      }
-      return {
-        success: false,
-        error: 'Unknown error occurred while fetching insights data'
       };
     }
   }

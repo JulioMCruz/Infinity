@@ -1,0 +1,42 @@
+{
+  "exclude": [ "node_modules", "dist" ],
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "CommonJS",
+    "rootDir": "src",
+    "outDir": "dist",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "moduleResolution": "Node",
+    "noImplicitAny": false,
+    "pretty": true,
+    "strictNullChecks": false,
+    "resolveJsonModule": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "baseUrl": "./",
+    "paths": {
+      "@Src/*": [ "src/*" ],
+      "@Config/*": [ "src/config/*" ],
+      "@Utils/*": [ "src/utils/*" ],
+      "@Domain/*": [ "src/domain/*" ],
+      "@Infraestructure/*": [ "src/infraestructure/*" ],
+      "@Presentation/*": [ "src/presentation/*" ],
+      "@Bootstrap/*": [ "src/presentation/Bootstrap/*" ]
+    },
+    "lib": [ "ESNext", "ES2022" ],
+    "typeRoots": [ "./node_modules/@types", "./src/Bootstrap/types" ],
+  },
+  "plugins": [
+    { "transform": "typescript-transform-paths", "afterDeclarations": true }
+  ],
+  "ts-node-dev": {
+    "transpileOnly": true,
+    "files": true,
+    "esm": true,
+    "esModuleInterop": true,
+    "require": [ "tsconfig-paths/register" ]
+  }
+}

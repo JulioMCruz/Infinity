@@ -1,0 +1,8 @@
+/node_modules
+/mongo
+/build
+/save
+docker-compose.yml
+package-lock.json
+.git
+.gitignore

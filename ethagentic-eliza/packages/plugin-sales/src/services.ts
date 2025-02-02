@@ -2,9 +2,9 @@ import axios from 'axios';
 import { elizaLogger } from "@elizaos/core";
 import { EthAgenticConfig, GetSalesResponse, GetInsightsResponse } from './types';
 
-export const createEthAgenticService = (baseUrl: string) => new EthAgenticService({ baseUrl });
+export const createSalesService = (baseUrl: string) => new SalesService({ baseUrl });
 
-class EthAgenticService {
+class SalesService {
   private baseUrl: string;
 
   constructor(config: EthAgenticConfig) {

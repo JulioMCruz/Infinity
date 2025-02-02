@@ -22,7 +22,7 @@ export const getInsightsAction: Action = {
         "get insights data",
         "retrieve insights metrics",
         "analyze platform metrics",
-        "get performance insights"
+        "get performance insights",
     ],
     examples: getInsightsExamples,
     handler: async (
@@ -102,13 +102,46 @@ export const getInsightsAction: Action = {
             if (callback) {
                 elizaLogger.debug("🔵 Ejecutando callback con los datos");
                 callback({
-                    text: `Here are the latest insights:\n${JSON.stringify(
-                        insightsData.data,
-                        null,
-                        2
-                    )}`,
+                    text: formatInsightsResponse(insightsData.data),
                     content: insightsData.data,
                 });
+
+                // Helper function to format insights data in a more readable way
+                function formatInsightsResponse(data: any[]): string {
+                    if (!data || data.length === 0) {
+                        return "No insights data available.";
+                    }
+
+                    const header = "📊 Latest Insights Report 📊\n";
+                    const insights = data
+                        .map((item) => {
+                            const trendIcon = getTrendIcon(item.trend);
+                            const percentageFormatted =
+                                item.percentage > 0
+                                    ? `+${item.percentage}%`
+                                    : `${item.percentage}%`;
+
+                            return `${trendIcon} ${item.metric}
+   Value: ${item.value.toLocaleString()}
+   Change: ${percentageFormatted}\n`;
+                        })
+                        .join("\n");
+
+                    return `${header}\n${insights}`;
+                }
+
+                function getTrendIcon(trend: string): string {
+                    switch (trend?.toLowerCase()) {
+                        case "up":
+                            return "📈";
+                        case "down":
+                            return "📉";
+                        case "stable":
+                            return "➡️";
+                        default:
+                            return "❔";
+                    }
+                }
                 return true;
             }
         } catch (error) {

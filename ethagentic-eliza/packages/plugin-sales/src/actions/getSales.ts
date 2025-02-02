@@ -101,11 +101,11 @@ export const getSalesAction: Action = {
             if (callback) {
                 elizaLogger.debug("🔵 Ejecutando callback con los datos");
                 callback({
-                    text: `Here are the latest sales figures:\n${JSON.stringify(
-                        salesData.data,
-                        null,
-                        2
-                    )}`,
+                    text: `Here are the latest sales figures:\n\n${salesData.data.map(sale => 
+                        `🏷️ Product: ${sale.product}\n` +
+                        `💰 Amount: $${sale.amount}\n` +
+                        `📅 Date: ${new Date(sale.date).toLocaleDateString()}\n`
+                    ).join('\n')}`,
                     content: salesData.data,
                 });
                 return true;

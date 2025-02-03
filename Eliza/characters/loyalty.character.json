@@ -1,6 +1,6 @@
 {
   "name": "Loyalty Engine AI",
-  "clients": [],
+  "clients": ["direct"],
   "modelProvider": "anthropic",
   "settings": {
     "voice": {

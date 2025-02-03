@@ -535,7 +535,7 @@ importers:
   client:
     dependencies:
       '@elizaos/core':
-        specifier: workspace:*
+        specifier: 0.1.9
         version: link:../packages/core
       '@radix-ui/react-avatar':
         specifier: ^1.1.2

@@ -1,6 +1,7 @@
 import type { UUID, Character } from "@elizaos/core";
 
-const BASE_URL = `http://localhost:${import.meta.env.VITE_SERVER_PORT}`;
+//const BASE_URL = `http://localhost:${import.meta.env.VITE_SERVER_PORT}`;
+const SERVER_ENDPOINT = import.meta.env.VITE_SERVER_ENDPOINT;
 
 const fetcher = async ({
     url,
@@ -38,7 +39,7 @@ const fetcher = async ({
         }
     }
 
-    return fetch(`${BASE_URL}${url}`, options).then(async (resp) => {
+    return fetch(`${SERVER_ENDPOINT}${url}`, options).then(async (resp) => {
         const contentType = resp.headers.get('Content-Type');
         if (contentType === "audio/mpeg") {
             return await resp.blob();

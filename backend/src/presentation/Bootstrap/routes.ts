@@ -1,6 +1,7 @@
 import ansiColors from "ansi-colors";
 import {Router} from "express";
-import { EthAgenticRoutes } from "../EthAgentic/routes/EthAgenticRoutes";
+import { EthAgenticRoutes } from "../Infinity/routes/EthAgenticRoutes";
+import { LoyaltyRoutes } from "../Infinity/routes/LoyaltyRoutes";
 
 interface RouteClass {
   routes: Router;
@@ -10,7 +11,8 @@ interface RouteClass {
 export class AppRoutes {
   constructor(router: Router) {
     const v1Routes: RouteClass[] = [
-      new EthAgenticRoutes()
+      new EthAgenticRoutes(),
+      new LoyaltyRoutes()
     ];
     const v2Routes: RouteClass[] = [];
 

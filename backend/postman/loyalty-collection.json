@@ -1,0 +1,187 @@
+{
+  "info": {
+    "_postman_id": "8c486eaa-ddbf-46ac-8a04-022138c918ff",
+    "name": "Loyalty Rewards",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "7997707"
+  },
+  "item": [
+    {
+      "name": "Business Management",
+      "item": [
+        {
+          "name": "Register Business",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Silver Grill\",\n  \"products\": \"Asian fusion food truck serving tacos, chimichangas, sushi\",\n  \"walletAddress\": \"0x9b4111...1111\",\n  \"businessType\": \"food_service\",\n  \"pointsRatio\": 5,\n  \"scanInterval\": \"4_hours\"\n}"
+            },
+            "url": {
+              "raw": "localhost:9000/api/v1/loyalty/business",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "v1", "loyalty", "business"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Business",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:9000/api/v1/loyalty/business/0x9b4111...1111",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "v1", "loyalty", "business", "0x9b4111...1111"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Points Management",
+      "item": [
+        {
+          "name": "Distribute Points",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"walletAddress\": \"0x222...2222\",\n  \"amount\": 20\n}"
+            },
+            "url": {
+              "raw": "localhost:9000/api/v1/loyalty/points",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "v1", "loyalty", "points"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Coupon Management",
+      "item": [
+        {
+          "name": "Mint Coupon",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"walletAddress\": \"0x222...2222\",\n  \"item\": \"taco\",\n  \"pointsCost\": 5\n}"
+            },
+            "url": {
+              "raw": "localhost:9000/api/v1/loyalty/coupon/mint",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "v1", "loyalty", "coupon", "mint"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Burn Coupon",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"walletAddress\": \"0x222...2222\",\n  \"item\": \"taco\"\n}"
+            },
+            "url": {
+              "raw": "localhost:9000/api/v1/loyalty/coupon/burn",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "v1", "loyalty", "coupon", "burn"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Mark Coupon as Fulfilled",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"walletAddress\": \"0x222...2222\",\n  \"item\": \"taco\"\n}"
+            },
+            "url": {
+              "raw": "localhost:9000/api/v1/loyalty/coupon/fulfill",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "v1", "loyalty", "coupon", "fulfill"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Activity Tracking",
+      "item": [
+        {
+          "name": "Get Coupon Activities",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:9000/api/v1/loyalty/coupon/activities",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "v1", "loyalty", "coupon", "activities"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Unredeemed Coupons",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:9000/api/v1/loyalty/coupon/unredeemed",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "v1", "loyalty", "coupon", "unredeemed"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

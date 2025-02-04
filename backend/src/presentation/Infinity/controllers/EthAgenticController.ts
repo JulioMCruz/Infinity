@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { IEthAgenticService } from '@Src/presentation/EthAgentic/eth.types';
+import { IEthAgenticService } from '@Src/presentation/Infinity/eth.types';
 import { NotFoundError } from '@Domain/errors/NotFoundError';
 
 export class EthAgenticController {

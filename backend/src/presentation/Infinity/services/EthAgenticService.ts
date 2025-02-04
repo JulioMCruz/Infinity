@@ -1,4 +1,4 @@
-import { IEthAgenticService, IEthAgenticRepository, Sale, Insight } from "@Src/presentation/EthAgentic/eth.types";
+import { IEthAgenticService, IEthAgenticRepository, Sale, Insight } from "@Src/presentation/Infinity/eth.types";
 import { NotFoundError } from "@Domain/errors/NotFoundError";
 
 export class EthAgenticService implements IEthAgenticService {

@@ -62,6 +62,8 @@ export default function ChatTtsButton({
         if (audioBlob) {
             play();
             return;
+        } else {
+            mutation.mutate();
         }
     };
 

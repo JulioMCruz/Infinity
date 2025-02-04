@@ -1,25 +1,5 @@
 import type { ActionExample } from "@elizaos/core";
 
-const salesData = [
-    {
-        "id": "1",
-        "amount": 1500,
-        "date": "2024-02-01",
-        "product": "NFT Collection Alpha"
-    },
-    {
-        "id": "2", 
-        "amount": 2300,
-        "date": "2024-02-02",
-        "product": "Digital Art Series X"
-    },
-    {
-        "id": "3",
-        "amount": 850,
-        "date": "2024-02-02",
-        "product": "Metaverse Land Plot"
-    }
-];
 
 export const getSalesExamples: ActionExample[][] = [
     [
@@ -39,7 +19,9 @@ export const getSalesExamples: ActionExample[][] = [
         {
             user: "{{agent}}",
             content: {
-                text: `Here are the latest sales figures:\n${JSON.stringify(salesData, null, 2)}`,
+                text: `Here are the latest sales figures: 
+
+                `,
             },
         },
     ],
@@ -60,7 +42,7 @@ export const getSalesExamples: ActionExample[][] = [
         {
             user: "{{agent}}",
             content: {
-                text: `Here are your recent sales:\n${JSON.stringify(salesData, null, 2)}`,
+                text: `Here are your recent sales: `,
             },
         },
     ],
@@ -81,7 +63,7 @@ export const getSalesExamples: ActionExample[][] = [
         {
             user: "{{agent}}",
             content: {
-                text: `Here's your sales report:\n${JSON.stringify(salesData, null, 2)}`,
+                text: `Here's your sales report: `,
             },
         },
     ]

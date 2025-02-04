@@ -5,16 +5,10 @@ import { EthAgenticConfig } from "./types";
 export const validateEthAgenticConfig = async (
     runtime: IAgentRuntime
 ): Promise<EthAgenticConfig> => {
-    const secrets = runtime.character?.settings?.secrets;
-    elizaLogger.debug("🔵 - validateEthAgenticConfig - secrets", secrets);
-
-    if (!secrets || typeof secrets !== "object") {
-        throw new Error("EthAgentic configuration not found");
-    }
-
-    const baseUrl = secrets["baseUrl"];
+    const baseUrl = runtime.getSetting("BACKEND_DATA_ENDPOINT");
     if (!baseUrl || typeof baseUrl !== "string") {
-        throw new Error("EthAgentic baseUrl not configured");
+        elizaLogger.error("EthAgentic BACKEND_DATA_ENDPOINT not configured", baseUrl );
+        throw new Error("EthAgentic BACKEND_DATA_ENDPOINT not configured");
     }
 
     return { baseUrl };

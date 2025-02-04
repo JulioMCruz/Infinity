@@ -34,7 +34,7 @@ export function AppSidebar() {
             <SidebarHeader>
                 <SidebarMenu>
                     <SidebarMenuItem>
-                        <SidebarMenuButton size="xl" asChild>
+                        <SidebarMenuButton size="lg" className="h-24" asChild>
                             <NavLink to="/home">
                                 <img
                                     alt="elizaos-icon"

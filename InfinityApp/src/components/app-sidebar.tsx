@@ -30,7 +30,7 @@ export function AppSidebar() {
     const agents = query?.data?.agents;
 
     return (
-        <Sidebar>
+        <Sidebar className="h-[calc(100vh-5.5rem)]">
             <SidebarHeader>
                 <SidebarMenu>
                     <SidebarMenuItem>

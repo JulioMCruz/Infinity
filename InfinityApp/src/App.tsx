@@ -12,6 +12,7 @@ import useVersion from "./hooks/use-version";
 import Dashboard from "./routes/dashboard";
 import Landing from "./routes/landing";
 import { SidebarWrapper } from "@/components/sidebar-wrapper";
+import { Header } from "./components/header";
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -26,7 +27,7 @@ function App() {
     return (
         <QueryClientProvider client={queryClient}>
             <div
-                className="dark antialiased"
+                className="dark antialiased min-h-screen"
                 style={{
                     colorScheme: "dark",
                 }}
@@ -34,24 +35,27 @@ function App() {
                 <BrowserRouter>
                     <TooltipProvider delayDuration={0}>
                         <SidebarProvider>
-                            <SidebarWrapper />
-                            <SidebarInset>
-                                <div className="flex flex-1 flex-col gap-4 size-full container">
-                                    <Routes>
-                                        <Route path="/" element={<Landing />} />
-                                        <Route path="/home" element={<Home />} />
-                                        <Route path="/dashboard" element={<Dashboard />} />
-                                        <Route
-                                            path="chat/:agentId"
-                                            element={<Chat />}
-                                        />
-                                        <Route
-                                            path="settings/:agentId"
-                                            element={<Overview />}
-                                        />
-                                    </Routes>
+                            <div className="flex flex-col size-full mx-6">
+                                <Header />
+                                <div className="flex flex-1">
+                                    <SidebarWrapper />
+                                    <SidebarInset>
+                                        <Routes>
+                                            <Route path="/" element={<Landing />} />
+                                            <Route path="/home" element={<Home />} />
+                                            <Route path="/dashboard" element={<Dashboard />} />
+                                            <Route
+                                                path="chat/:agentId"
+                                                element={<Chat />}
+                                            />
+                                            <Route
+                                                path="settings/:agentId"
+                                                element={<Overview />}
+                                            />
+                                        </Routes>
+                                    </SidebarInset>
                                 </div>
-                            </SidebarInset>
+                            </div>
                         </SidebarProvider>
                         <Toaster />
                     </TooltipProvider>

@@ -1,6 +1,6 @@
 {
   "name": "Infinity-H",
-  "clients": [],
+  "clients": ["direct"],
   "modelProvider": "anthropic",
   "settings": {
     "secrets": {},

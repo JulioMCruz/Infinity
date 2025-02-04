@@ -34,8 +34,8 @@ export function AppSidebar() {
             <SidebarHeader>
                 <SidebarMenu>
                     <SidebarMenuItem>
-                        <SidebarMenuButton size="lg" asChild>
-                            <NavLink to="/">
+                        <SidebarMenuButton size="xl" asChild>
+                            <NavLink to="/home">
                                 <img
                                     alt="elizaos-icon"
                                     src="/elizaos-icon.png"
@@ -45,6 +45,9 @@ export function AppSidebar() {
                                 />
 
                                 <div className="flex flex-col gap-0.5 leading-none">
+                                    <span className="font-semibold text-lg my-1">
+                                        Infinity by
+                                    </span>
                                     <span className="font-semibold">
                                         ElizaOS
                                     </span>

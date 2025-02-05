@@ -10,9 +10,10 @@ import {
     CardTitle,
 } from "@/components/ui/card";
 import { apiClient } from "@/lib/api";
-import { NavLink } from "react-router";
+import { Navigate, NavLink } from "react-router";
 import type { UUID } from "@elizaos/core";
 import { formatAgentName } from "@/lib/utils";
+import { usePrivy } from '@privy-io/react-auth'
 
 export default function Home() {
     const query = useQuery({
@@ -22,6 +23,13 @@ export default function Home() {
     });
 
     const agents = query?.data?.agents;
+
+    const { authenticated } = usePrivy()
+
+    if (!authenticated) {
+        return <Navigate to="/" replace />;
+    }
+
 
     return (
         <div className="flex flex-col gap-4 h-full p-4">

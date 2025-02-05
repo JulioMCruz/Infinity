@@ -68,11 +68,12 @@ export const apiClient = {
     sendMessage: (
         agentId: string,
         message: string,
+        user: string,
         selectedFile?: File | null
     ) => {
         const formData = new FormData();
         formData.append("text", message);
-        formData.append("user", "user");
+        formData.append("user", user);
 
         if (selectedFile) {
             formData.append("file", selectedFile);

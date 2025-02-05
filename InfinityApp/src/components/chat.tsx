@@ -24,6 +24,9 @@ import { AudioRecorder } from "./audio-recorder";
 import { Badge } from "./ui/badge";
 import { useAutoScroll } from "./ui/chat/hooks/useAutoScroll";
 
+import { usePrivy } from '@privy-io/react-auth'
+
+
 type ExtraContentFields = {
     user: string;
     createdAt: number;
@@ -52,6 +55,9 @@ export default function Page({ agentId }: { agentId: UUID }) {
     const { scrollRef, isAtBottom, scrollToBottom, disableAutoScroll } = useAutoScroll({
         smooth: true,
     });
+
+    const { user } = usePrivy()
+
    
     useEffect(() => {
         scrollToBottom();
@@ -86,7 +92,7 @@ export default function Page({ agentId }: { agentId: UUID }) {
         const newMessages = [
             {
                 text: input,
-                user: "user",
+                user: user?.wallet?.address,
                 createdAt: Date.now(),
                 attachments,
             },
@@ -127,7 +133,7 @@ export default function Page({ agentId }: { agentId: UUID }) {
         }: {
             message: string;
             selectedFile?: File | null;
-        }) => apiClient.sendMessage(agentId, message, selectedFile),
+        }) => apiClient.sendMessage(agentId, message, user?.wallet?.address ?? "user", selectedFile),
         onSuccess: (newMessages: ContentWithUser[]) => {
             queryClient.setQueryData(
                 ["messages", agentId],
@@ -171,7 +177,7 @@ export default function Page({ agentId }: { agentId: UUID }) {
     const CustomAnimatedDiv = animated.div as React.FC<AnimatedDivProps>;
 
     return (
-        <div className="flex flex-col w-full h-[calc(100dvh)] p-4">
+        <div className="flex flex-col w-full h-[calc(100vh-3.5rem)] p-4">
             <div className="flex-1 overflow-y-auto">
                 <ChatMessageList 
                     scrollRef={scrollRef}

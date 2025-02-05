@@ -28,6 +28,7 @@ type ExtraContentFields = {
     user: string;
     createdAt: number;
     isLoading?: boolean;
+    isHtml?: boolean;
 };
 
 type ContentWithUser = Content & ExtraContentFields;
@@ -59,6 +60,28 @@ export default function Page({ agentId }: { agentId: UUID }) {
 
     useEffect(() => {
         scrollToBottom();
+        
+        // Mock message with QR code for testing HTML injection
+        const mockQrMessage = {
+            text: `
+                <div style="text-align: center;">
+                    <h3 style="color: #333; margin-bottom: 10px;">Escanea el código QR</h3>
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://example.com" 
+                         alt="QR Code"
+                         style="width: 150px; height: 150px; margin: 10px auto; display: block;"
+                    />
+                    <p style="color: #666; font-size: 14px;">Este es un ejemplo de QR code inyectado como HTML</p>
+                </div>
+            `,
+            user: "system",
+            createdAt: Date.now(),
+            isHtml: true
+        };
+
+        queryClient.setQueryData(
+            ["messages", agentId],
+            (old: ContentWithUser[] = []) => [...old, mockQrMessage]
+        );
     }, []);
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -205,9 +228,13 @@ export default function Page({ agentId }: { agentId: UUID }) {
                                             isLoading={message?.isLoading}
                                         >
                                             {message?.user !== "user" ? (
-                                                <AIWriter>
-                                                    {message?.text}
-                                                </AIWriter>
+                                                message?.isHtml ? (
+                                                    <div dangerouslySetInnerHTML={{ __html: message.text }} />
+                                                ) : (
+                                                    <AIWriter>
+                                                        {message?.text}
+                                                    </AIWriter>
+                                                )
                                             ) : (
                                                 message?.text
                                             )}

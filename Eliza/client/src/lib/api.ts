@@ -68,11 +68,15 @@ export const apiClient = {
     sendMessage: (
         agentId: string,
         message: string,
-        selectedFile?: File | null
+        selectedFile?: File | null,
+        isHtml?: boolean
     ) => {
         const formData = new FormData();
         formData.append("text", message);
         formData.append("user", "user");
+        if (isHtml) {
+            formData.append("isHtml", "true");
+        }
 
         if (selectedFile) {
             formData.append("file", selectedFile);

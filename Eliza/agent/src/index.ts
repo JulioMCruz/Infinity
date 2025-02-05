@@ -27,6 +27,9 @@ import { PrimusAdapter } from "@elizaos/plugin-primus";
 import { lightningPlugin } from "@elizaos/plugin-lightning";
 import { elizaCodeinPlugin, onchainJson } from "@elizaos/plugin-iq6900";
 import { dcapPlugin } from "@elizaos/plugin-dcap";
+import { salesPlugin } from "@elizaos/plugin-sales";
+import { insightsPlugin } from "@elizaos/plugin-insights";
+
 import {
     AgentRuntime,
     CacheManager,
@@ -1031,6 +1034,8 @@ export async function createAgent(
                 ? elizaCodeinPlugin
                 : null,
             bootstrapPlugin,
+            salesPlugin,
+            insightsPlugin,
             getSecret(character, "CDP_API_KEY_NAME") &&
             getSecret(character, "CDP_API_KEY_PRIVATE_KEY") &&
             getSecret(character, "CDP_AGENT_KIT_NETWORK")

@@ -2,8 +2,13 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import PageTitle from "@/components/page-title";
 import { NavLink } from "react-router";
+import { usePrivy } from '@privy-io/react-auth'
+
 
 export default function Landing() {
+
+    const { authenticated } = usePrivy()
+
     return (
         <div className="flex flex-col gap-4 h-full p-4">
             <PageTitle 
@@ -12,6 +17,8 @@ export default function Landing() {
             />
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                {authenticated && (
                 <Card>
                     <CardHeader>
                         <CardTitle>Get Started</CardTitle>
@@ -29,7 +36,8 @@ export default function Landing() {
                             </NavLink>
                         </div>
                     </CardContent>
-                </Card>
+                    </Card>
+                )}
 
                 <Card>
                     <CardHeader>

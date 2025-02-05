@@ -1,7 +1,16 @@
 import PageTitle from "@/components/page-title";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { usePrivy } from '@privy-io/react-auth'
+import { Navigate } from 'react-router-dom';
 
 export default function Dashboard() {
+    
+    const { authenticated } = usePrivy()
+
+    if (!authenticated) {
+        return <Navigate to="/" replace />;
+    }
+
     return (
         <div className="flex flex-col gap-4 h-full p-4">
             <PageTitle 

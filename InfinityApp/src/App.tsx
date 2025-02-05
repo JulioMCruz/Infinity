@@ -13,6 +13,7 @@ import Dashboard from "./routes/dashboard";
 import Landing from "./routes/landing";
 import { SidebarWrapper } from "@/components/sidebar-wrapper";
 import { Header } from "./components/header";
+import { PrivyWrapper } from "./lib/privy/provider";
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -26,12 +27,13 @@ function App() {
     useVersion();
     return (
         <QueryClientProvider client={queryClient}>
-            <div
-                className="dark antialiased min-h-screen"
-                style={{
+            <PrivyWrapper>
+                <div
+                    className="dark antialiased min-h-screen"
+                    style={{
                     colorScheme: "dark",
-                }}
-            >
+                        }}
+                    >
                 <BrowserRouter>
                     <TooltipProvider delayDuration={0}>
                         <SidebarProvider>
@@ -61,6 +63,7 @@ function App() {
                     </TooltipProvider>
                 </BrowserRouter>
             </div>
+            </PrivyWrapper>
         </QueryClientProvider>
     );
 }

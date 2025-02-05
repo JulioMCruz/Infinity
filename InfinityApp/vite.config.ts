@@ -25,6 +25,12 @@ export default defineConfig(({ mode }) => {
             "import.meta.env.VITE_SERVER_ENDPOINT": JSON.stringify(
                 env.SERVER_ENDPOINT || "http://localhost:3000"
             ),
+            "import.meta.env.VITE_PRIVY_APP_ID": JSON.stringify(
+                env.PRIVY_APP_ID || ""
+            ),
+            "import.meta.env.VITE_PRIVY_CLIENT_ID": JSON.stringify(
+                env.PRIVY_CLIENT_ID || ""
+            ),
         },
         build: {
             outDir: "dist",

@@ -9001,9 +9001,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.5.73":
-  version: 1.5.92
-  resolution: "electron-to-chromium@npm:1.5.92"
-  checksum: 412673e3f48351bd8a2698975cdd9b9aa20232f6fba386cd5c5fc7c5434869fac294d200d10ac88af4eed48d5607ac144b9ea4611bd2ce8865cc439a4626c561
+  version: 1.5.93
+  resolution: "electron-to-chromium@npm:1.5.93"
+  checksum: 96554cabb4d43552a41f15eb1e019cff00c72966c54857ccfcfe29911697a90c3859ae34d96256470e68cb44dd66cf34c67faa8f291ada747450f2bbadb8f1a0
   languageName: node
   linkType: hard
 
@@ -14191,7 +14191,7 @@ __metadata:
 "nan@github:JCMais/nan#fix/electron-failures":
   version: 2.22.0
   resolution: "nan@https://github.com/JCMais/nan.git#commit=0ec2eca8b2fd7518affb3945d087e393ad839b7e"
-  checksum: c501215301d0590ab363644a1e372873c493aeb41a6d8f5b0314c3e6a2a0819900795ef73e88bccf141a256cc7dcc1b8993c2ebc6346b177b779a01aeb9e854b
+  checksum: c40115d6f74d8141a307d4d6225eccd4681b3f7790640cfc2cdadcb3b1fa6f5a14dc41218a570b7170f28ff583bb3bfdcd673a2b548a50592a1794e1603582ad
   languageName: node
   linkType: hard
 
@@ -18267,7 +18267,7 @@ __metadata:
 "uWebSockets.js@uNetworking/uWebSockets.js#semver:^20":
   version: 20.51.0
   resolution: "uWebSockets.js@https://github.com/uNetworking/uWebSockets.js.git#commit=6609a88ffa9a16ac5158046761356ce03250a0df"
-  checksum: ad5f5a1b7ad60c57eab0f75886822e1d6e40919613a9f479229691da615960aa70a520a93ecf86b2e837e16e3fcfeebf2eff9599fd57ec8ce57be5f12170ce1b
+  checksum: d5eb2563517d3c2063a4953c447011da12f0b57b949fc3aec3148d48b0d730e729c669b54e9fc4a4d12d2987c93dee7daa9b8b9c4d6b54d892446ae065ae6bc2
   languageName: node
   linkType: hard
 
@@ -18661,13 +18661,13 @@ __metadata:
   linkType: hard
 
 "usehooks-ts@npm:~3.1.0":
-  version: 3.1.0
-  resolution: "usehooks-ts@npm:3.1.0"
+  version: 3.1.1
+  resolution: "usehooks-ts@npm:3.1.1"
   dependencies:
     lodash.debounce: ^4.0.8
   peerDependencies:
-    react: ^16.8.0  || ^17 || ^18
-  checksum: 4f850c0c5ab408afa52fa2ea2c93c488cd7065c82679eb1fb62cba12ca4c57ff62d52375acc6738823421fe6579ce3adcea1e2dc345ce4f549c593d2e51455b3
+    react: ^16.8.0  || ^17 || ^18 || ^19 || ^19.0.0-rc
+  checksum: ecc8a678f7f08b1e8caaeeb4601b1cd32709e30f73db65441d09808a5f1488f8d2c38a5bc908aa0c67b6dc35379e4b6b7bcd581df57845f91ab6d95256d765ca
   languageName: node
   linkType: hard
 
@@ -18876,8 +18876,8 @@ __metadata:
   linkType: hard
 
 "viem@npm:^2.1.1":
-  version: 2.22.21
-  resolution: "viem@npm:2.22.21"
+  version: 2.22.22
+  resolution: "viem@npm:2.22.22"
   dependencies:
     "@noble/curves": 1.8.1
     "@noble/hashes": 1.7.1
@@ -18892,7 +18892,7 @@ __metadata:
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 89b7b2f0ed8580769e9a14a7f10c18bc0679fd5953fe2447aabde84cd7723a9ca7598f4dd3161d2a580054eac9f45a9c28eaaee3c1061a441e2e2bc990b2a265
+  checksum: 666821316de073a32322390d23614327d85f34a699280f0c2bda3329640ac011091a7e75f290ccc8e904359379600096c956a6064b854d2ffb0b391932a438b8
   languageName: node
   linkType: hard
 

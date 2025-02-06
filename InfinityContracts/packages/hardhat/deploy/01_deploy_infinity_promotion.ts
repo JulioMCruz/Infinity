@@ -29,7 +29,10 @@ const deployInfinityPromotion: DeployFunction = async function (hre: HardhatRunt
   const infinityPromotion = await hre.ethers.getContract<Contract>("InfinityPromotion", deployer);
   console.log("🌮 InfinityPromotion deployed to:", infinityPromotion.address);
   console.log("📊 Max tokens:", await infinityPromotion.MAX_TOKENS());
-  console.log("⏰ Expiration time:", new Date((await infinityPromotion.expirationTime()).toNumber() * 1000).toISOString());
+  
+  // Handle BigInt value for expiration time
+  const expirationTime = await infinityPromotion.expirationTime();
+  console.log("⏰ Expiration time:", new Date(Number(expirationTime) * 1000).toISOString());
 };
 
 export default deployInfinityPromotion;

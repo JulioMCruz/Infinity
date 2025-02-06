@@ -4,13 +4,13 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/utils/Pausable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/utils/Counters.sol";
+import "./utils/Counters.sol";
 
 /**
  * @title InfinityPromotion
  * @dev NFT-based taco promotion system for redeeming free tacos
  */
-contract InfinityPromotion is ERC721, Pausable, Ownable {
+contract InfinityPromotion is ERC721, Pausable, Ownable(msg.sender) {
     using Counters for Counters.Counter;
 
     // Token ID counter

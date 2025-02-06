@@ -1,177 +1,118 @@
-# @elizaos/plugin-bootstrap
+# @elizaos/plugin-infinity
 
-A plugin providing core functionality and basic actions for ElizaOS agents.
+A plugin for ElizaOS that provides blockchain wallet functionality and token management capabilities.
 
 ## Description
 
-The Bootstrap plugin enables fundamental agent behaviors including conversation management, room interactions, and fact tracking. It provides essential actions and evaluators that form the foundation of agent interactions.
+The Infinity plugin enables blockchain-related functionalities for ElizaOS agents, including wallet address management and promotional token deployment. It provides essential actions for interacting with EVM-compatible blockchains.
 
 ## Installation
 
 ```bash
-pnpm install @elizaos/plugin-bootstrap
+pnpm install @elizaos/plugin-infinity
 ```
 
 ## Features
 
-### 1. Conversation Management
+### 1. Wallet Management
+- Retrieve wallet addresses
+- EVM-compatible wallet integration
+- Secure private key handling
+- Multiple wallet action support
 
-- NONE action for basic responses
-- CONTINUE action for follow-ups
-- IGNORE action for appropriate disengagement
-- Built-in conversation flow control
+### 2. Token Operations
+- Deploy promotional tokens
+- Configure token parameters:
+  - Token name and symbol
+  - Maximum supply
+  - Promotion duration
+  - Token metadata URI
+- Transaction handling and verification
 
-### 2. Room Control
+## Actions
 
-- Follow/Unfollow room functionality
-- Mute/Unmute capabilities
-- Automatic engagement level tracking
-- Smart participation management
+### 1. GET_WALLET_ADDRESS
+Retrieves the wallet address associated with the current runtime.
 
-### 3. Fact Management
+Similes:
+- SHARE_YOUR_WALLET_ADDRESS
+- SHOW_YOUR_WALLET_ADDRESS
+- STATE_YOUR_WALLET_ADDRESS
+- And more...
 
-- Automatic fact extraction
-- Categorization of claims
-- Deduplication of known information
-- Support for multiple fact types:
-    - Permanent facts
-    - Status updates
-    - Opinions
-    - Biographical information
+Requirements:
+- Valid INFINITY_PROMOTION_CONTRACT_ADDRESS configuration
+- Valid INFINITY_PROMOTION_FACTORY_CONTRACT_ADDRESS configuration
+- Valid EVM_PRIVATE_KEY configuration
+- Valid EVM_PROVIDER_URL configuration
 
-### 4. Goal Tracking
+### 2. CREATE_PROMOTION
+Creates and deploys a new promotional token with specified parameters.
 
-- Track objective progress
-- Update goal statuses
-- Monitor completion states
-- Automatic progress evaluation
+Similes:
+- CREATE_TOKEN
+- DEPLOY_TOKEN
+- NEW_TOKEN
+
+Parameters:
+- Token name
+- Token symbol
+- Maximum token supply
+- Promotion duration
+- Base URI for token metadata
 
 ## Providers
 
-### 1. Boredom Provider
-
-- Tracks engagement levels
-- Provides status messages
-- Monitors conversation quality
-- Adjusts participation accordingly
-
-### 2. Facts Provider
-
-- Manages fact database
-- Retrieves relevant information
-- Formats fact summaries
-- Maintains fact context
-
-### 3. Time Provider
-
-- Provides UTC timestamps
-- Human-readable formatting
-- Time-based operation support
+### Wallet Provider
+- Manages wallet connections
+- Handles address retrieval
+- Supports multiple chains
+- Integrates with EVM-compatible networks
 
 ## Development
 
-1. Clone the repository
-2. Install dependencies:
-
+1. Install dependencies:
 ```bash
 pnpm install
 ```
 
-3. Build the plugin:
-
+2. Build the plugin:
 ```bash
 pnpm run build
 ```
 
-4. Run linting:
-
+3. Run linting:
 ```bash
 pnpm run lint
 ```
 
 ## Dependencies
 
-- @elizaos/core: workspace:\*
+- @elizaos/core: workspace:*
+- @elizaos/plugin-tee: workspace:*
 
-## Future Enhancements
+## Configuration
 
-1. **Enhanced Conversation Management**
+The plugin requires certain environment variables to be set:
 
-    - Advanced context tracking
-    - Multi-thread conversation support
-    - Conversation state persistence
-    - Improved conversation flow control
-    - Natural language understanding improvements
+```env
+# Main contract for promotional tokens
+INFINITY_PROMOTION_CONTRACT_ADDRESS=
 
-2. **Advanced Room Control**
+# Factory contract for deploying new tokens
+INFINITY_PROMOTION_FACTORY_CONTRACT_ADDRESS=
 
-    - Dynamic room creation and management
-    - Room permission system
-    - Advanced moderation tools
-    - Room analytics and insights
-    - Cross-room communication features
+# Wallet private key for signing transactions
+EVM_PRIVATE_KEY=
 
-3. **Expanded Fact Management**
-
-    - Enhanced fact verification system
-    - Fact relationship mapping
-    - Automated fact updating
-    - Fact confidence scoring
-    - Cross-reference system
-    - Fact expiration management
-
-4. **Goal System Improvements**
-
-    - Multi-step goal planning
-    - Goal dependency tracking
-    - Progress visualization
-    - Goal priority management
-    - Automated milestone tracking
-    - Goal optimization suggestions
-
-5. **Provider Enhancements**
-
-    - Improved boredom detection
-    - Advanced engagement metrics
-    - Enhanced fact retrieval algorithms
-    - Real-time status updates
-    - Provider performance analytics
-
-6. **Memory Management**
-
-    - Enhanced memory prioritization
-    - Memory compression techniques
-    - Long-term memory storage
-    - Memory relationship mapping
-    - Context-aware recall
-
-7. **Developer Tools**
-
-    - Enhanced debugging capabilities
-    - Testing framework improvements
-    - Plugin development templates
-    - Documentation generator
-    - Performance profiling tools
-
-8. **Integration Features**
-    - Enhanced plugin interoperability
-    - External service connectors
-    - API gateway integration
-    - Webhook system improvements
-    - Third-party platform support
-
-We welcome community feedback and contributions to help prioritize these enhancements.
+# RPC endpoint URL for blockchain connection
+EVM_PROVIDER_URL=
+```
+- Additional configuration for the Infinity contract deployment
 
 ## Contributing
 
-Contributions are welcome! Please see the [CONTRIBUTING.md](CONTRIBUTING.md) file for more information.
-
-## Credits
-
-Special thanks to:
-
-- The Eliza Core development team
-- The Eliza community for their contributions and feedback
+Contributions are welcome! Please ensure you follow the project's coding standards and include appropriate tests for new features.
 
 ## License
 

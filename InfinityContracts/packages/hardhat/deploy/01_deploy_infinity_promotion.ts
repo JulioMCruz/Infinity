@@ -27,7 +27,6 @@ const deployInfinityPromotion: DeployFunction = async function (hre: HardhatRunt
 
   // Get the deployed contract
   const infinityPromotion = await hre.ethers.getContract<Contract>("InfinityPromotion", deployer);
-  console.log("🌮 InfinityPromotion deployed to:", infinityPromotion.address);
   console.log("📊 Max tokens:", await infinityPromotion.MAX_TOKENS());
   
   // Handle BigInt value for expiration time

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, type ReactNode } from "react"
+import { useState, useEffect, type ReactNode } from "react"
 import { Sidebar } from "@/components/dashboard/sidebar"
 import { MobileHeader } from "@/components/dashboard/mobile-header"
 
@@ -10,17 +10,35 @@ export default function DashboardLayout({
   children: ReactNode
 }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 768) // 768px is the breakpoint for md in Tailwind
+    }
+
+    checkIfMobile()
+    window.addEventListener("resize", checkIfMobile)
+
+    return () => {
+      window.removeEventListener("resize", checkIfMobile)
+    }
+  }, [])
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen)
-    document.body.style.overflow = !isSidebarOpen ? "hidden" : ""
+    if (isMobile) {
+      document.body.style.overflow = !isSidebarOpen ? "hidden" : ""
+    }
   }
 
   return (
-    <div className="flex flex-col md:flex-row min-h-screen bg-[#232323] text-white">
+    <div className="flex min-h-screen bg-[#232323] text-white">
       <MobileHeader toggleSidebar={toggleSidebar} />
-      <Sidebar isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
-      <main className={`flex-1 overflow-auto p-4 md:p-6 mt-16 md:mt-0 ${isSidebarOpen ? "md:ml-64" : ""}`}>
+      <Sidebar isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} isMobile={isMobile} />
+      <main
+        className={`flex-1 overflow-auto p-4 md:p-6 transition-all duration-300 ease-in-out ${isMobile ? "mt-16" : ""}`}
+      >
         {children}
       </main>
     </div>

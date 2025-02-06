@@ -8,20 +8,25 @@ import { Twitter, MessageSquare, LayoutDashboard, Settings, Database, DiscIcon a
 interface SidebarProps {
   isOpen: boolean
   setIsOpen: (isOpen: boolean) => void
+  isMobile: boolean
 }
 
-export function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
+export function Sidebar({ isOpen, setIsOpen, isMobile }: SidebarProps) {
   const pathname = usePathname()
 
   useEffect(() => {
-    const handleRouteChange = () => setIsOpen(false)
+    const handleRouteChange = () => {
+      if (isMobile) setIsOpen(false)
+    }
     window.addEventListener("popstate", handleRouteChange)
     return () => window.removeEventListener("popstate", handleRouteChange)
-  }, [setIsOpen])
+  }, [setIsOpen, isMobile])
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen)
-    document.body.style.overflow = !isOpen ? "hidden" : ""
+    if (isMobile) {
+      document.body.style.overflow = !isOpen ? "hidden" : ""
+    }
   }
 
   const navigation = {
@@ -42,15 +47,17 @@ export function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
 
   return (
     <>
-      {isOpen && <div className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden" onClick={toggleSidebar}></div>}
+      {isMobile && isOpen && <div className="fixed inset-0 bg-black bg-opacity-50 z-40" onClick={toggleSidebar}></div>}
       <div
-        className={`sidebar transition-transform duration-300 ease-in-out fixed md:static inset-y-0 left-0 z-50 w-64 bg-[#343434] flex flex-col overflow-y-auto pt-16 md:pt-0 ${
-          isOpen ? "translate-x-0" : "-translate-x-full"
-        } md:translate-x-0`}
+        className={`sidebar transition-transform duration-300 ease-in-out fixed md:sticky top-0 inset-y-0 left-0 z-50 w-64 bg-[#343434] flex flex-col overflow-y-auto pt-16 md:pt-0 h-screen ${
+          isMobile ? (isOpen ? "translate-x-0" : "-translate-x-full") : "translate-x-0"
+        }`}
       >
-        <button className="md:hidden absolute top-4 right-4 p-2 bg-[#484848] rounded-md" onClick={toggleSidebar}>
-          <X className="w-6 h-6" />
-        </button>
+        {isMobile && (
+          <button className="absolute top-4 right-4 p-2 bg-[#484848] rounded-md" onClick={toggleSidebar}>
+            <X className="w-6 h-6" />
+          </button>
+        )}
         <div className="p-4 border-b border-[#484848]">
           <Link href="/" className="block">
             <h1 className="text-3xl font-bold">
@@ -81,7 +88,7 @@ export function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
                       className={`flex items-center px-4 py-2 text-sm ${
                         pathname === item.href ? "bg-[#575757] text-white" : "text-[#999999] hover:bg-[#484848]"
                       }`}
-                      onClick={toggleSidebar}
+                      onClick={() => isMobile && toggleSidebar()}
                     >
                       <item.icon className="mr-3 h-5 w-5" />
                       {item.name}

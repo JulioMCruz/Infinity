@@ -31,8 +31,8 @@ export function Sidebar({ isOpen, setIsOpen, isMobile }: SidebarProps) {
 
   const navigation = {
     agent: [
-      { name: "Chats", href: "/dashboard/chats", icon: MessageSquare },
       { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
+      { name: "Agent Chat", href: "/dashboard/chats", icon: MessageSquare },
       { name: "Campaign Manager", href: "/dashboard/campaigns", icon: LayoutDashboard },
     ],
     owner: [

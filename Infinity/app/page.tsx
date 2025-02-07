@@ -6,6 +6,7 @@ import { Twitter, DiscIcon as Discord } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { usePrivy } from '@privy-io/react-auth'
 import { useRouter } from 'next/navigation'
+
 export default function Page() {
 
   const { login, authenticated, ready, user,logout } = usePrivy()

@@ -66,7 +66,7 @@ export function ChatInterface() {
     if (!input.trim()) return
 
     // Add user message
-    const newMessages = [...messages, { role: "user" as const, content: input }]
+    const newMessages = [...messages, { role: "user", content: input }]
     setMessages(newMessages)
     setInput("")
 

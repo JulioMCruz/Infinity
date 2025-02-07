@@ -10,7 +10,7 @@ export default function DashboardPage() {
     <div className="space-y-6 pt-4 md:pt-0">
       <WelcomeHeader
         businessName="Ether Eatery"
-        businessImage="/images/Ether-Eatery-Profile.png"
+        businessImage="/images/ether-eatery.png"
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">

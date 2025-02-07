@@ -1,8 +1,16 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
 import { Twitter, DiscIcon as Discord } from "lucide-react"
-
+import { Button } from "@/components/ui/button"
+import { usePrivy } from '@privy-io/react-auth'
+import { useRouter } from 'next/navigation'
 export default function Page() {
+
+  const { login, authenticated, ready, user,logout } = usePrivy()
+  const router = useRouter()
+
   return (
     <main className="min-h-screen bg-[#000510] text-white relative overflow-hidden">
       {/* Background Image */}
@@ -34,15 +42,41 @@ export default function Page() {
             </Link>
           </div>
           <div className="flex gap-4">
-            <Link href="/docs" className="px-4 py-2 text-sm font-medium text-white hover:opacity-80 transition-opacity">
+            {/* <Link href="/docs" className="px-4 py-2 text-sm font-medium text-white hover:opacity-80 transition-opacity">
               Docs
-            </Link>
+            </Link> */}
+
+            <div className="text-white mt-2">
+                  Welcome, {user?.wallet?.address ? 
+                    `${user.wallet.address.slice(0, 5)}...${user.wallet.address.slice(-5)}` 
+                    : ''}
+            </div>
+
+            {!authenticated && (
+            <Button
+              onClick={login}
+              className="px-4 py-2 text-sm font-medium text-white rounded bg-gradient-to-r from-[#4169E1] to-[#9c72fe] hover:from-[#3a5fcf] hover:to-[#8b65e3] transition-all duration-200 ease-in-out"
+            >
+              Sign In
+            </Button>
+            )}
+
+            {authenticated && (
             <Link
               href="/dashboard"
-              className="px-4 py-2 text-sm font-medium bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
+              className="px-4 py-2 text-sm font-medium text-white rounded bg-gradient-to-r from-[#4169E1] to-[#9c72fe] hover:from-[#3a5fcf] hover:to-[#8b65e3] transition-all duration-200 ease-in-out"
             >
               Launch App
             </Link>
+            )}
+            {authenticated && (
+            <Button
+              onClick={logout}
+              className="px-4 py-2 text-sm font-medium text-white rounded bg-gradient-to-r from-[#FF4500] to-[#FF6347] hover:from-[#FF6347] hover:to-[#FF7F50] transition-all duration-200 ease-in-out"            >
+              Logout
+            </Button>
+            )}
+
           </div>
         </nav>
 

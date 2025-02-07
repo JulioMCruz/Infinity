@@ -4,6 +4,8 @@ import { useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Twitter, MessageSquare, LayoutDashboard, Settings, Database, DiscIcon as DiscordIcon, X } from "lucide-react"
+import { usePrivy } from '@privy-io/react-auth'
+import { useRouter } from 'next/navigation'
 
 interface SidebarProps {
   isOpen: boolean
@@ -13,6 +15,15 @@ interface SidebarProps {
 
 export function Sidebar({ isOpen, setIsOpen, isMobile }: SidebarProps) {
   const pathname = usePathname()
+
+  const { login, authenticated, ready, user,logout } = usePrivy()
+  const router = useRouter()
+
+  useEffect(() => {
+    if (!authenticated) {
+      router.push('/')
+    }
+  }, [authenticated, router])  
 
   useEffect(() => {
     const handleRouteChange = () => {
@@ -31,8 +42,8 @@ export function Sidebar({ isOpen, setIsOpen, isMobile }: SidebarProps) {
 
   const navigation = {
     agent: [
-      { name: "Chats", href: "/dashboard/chats", icon: MessageSquare },
       { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
+      { name: "Agent Chat", href: "/dashboard/chats", icon: MessageSquare },
       { name: "Campaign Manager", href: "/dashboard/campaigns", icon: LayoutDashboard },
     ],
     owner: [
@@ -102,7 +113,7 @@ export function Sidebar({ isOpen, setIsOpen, isMobile }: SidebarProps) {
 
         <div className="p-4 bg-purple-600">
           <div className="space-y-4">
-            <button className="w-full text-left px-4 py-2 text-sm font-semibold">LOGOUT</button>
+            <button className="w-full text-left px-4 py-2 text-sm font-semibold" onClick={logout}>LOGOUT</button>
             <div className="space-y-2">
               <Link href="#" className="block px-4 py-1 text-sm">
                 Resources
@@ -121,7 +132,9 @@ export function Sidebar({ isOpen, setIsOpen, isMobile }: SidebarProps) {
                 <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.504 1.201-.825 1.23-.703.064-1.237-.461-1.917-.903-1.065-.693-1.669-1.123-2.702-1.799-1.195-.824-.42-1.278.261-2.02.179-.193 3.262-2.982 3.321-3.236.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.139-5.062 3.345-.479.329-.913.489-1.302.481-.428-.008-1.252-.241-1.865-.44-.752-.244-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.831-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635.099-.002.321.023.465.178.12.13.145.309.157.472-.002.089.018.181.002.289z" />
               </svg>
             </div>
-            <div className="text-center text-sm">Logged in as 0xabc.....123</div>
+            {authenticated && (
+              <div className="text-center text-sm">Logged in as {user?.wallet?.address ? `${user.wallet.address.slice(0, 5)}...${user.wallet.address.slice(-5)}` : ''}</div>
+            )}
           </div>
         </div>
       </div>

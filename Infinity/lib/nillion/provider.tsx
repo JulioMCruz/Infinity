@@ -24,8 +24,6 @@ class NillionAccess {
           throw new Error('Nillion schema ID is not set');
         }
 
-
-
         const collection = new SecretVaultWrapper(
             orgConfig.nodes,
             orgConfig.orgCredentials,
@@ -40,10 +38,14 @@ class NillionAccess {
         const filterByUserWallet = {
         userwallet: userWallet,
         };    
+
+        console.log('🚀 ~ NillionAccess ~ checkUserExists ~ filterByUserWallet:', filterByUserWallet)
     
         // Read the original record
         const readRecord = await collection.readFromNodes(filterByUserWallet);        
         //console.log('📚 Read original record:', readRecord);
+
+        console.log('🚀 ~ NillionAccess ~ checkUserExists ~ readRecord:', readRecord)
 
         return readRecord.length > 0;
 

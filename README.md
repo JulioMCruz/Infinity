@@ -1,5 +1,5 @@
 <div align="center">
-<img src="public/placeholder-logo.svg" alt="Infinity" width="200"/>
+<img src="public/logo.png" alt="Infinity" width="200"/>
 
 # Infinity - AI-Powered Loyalty System
 
@@ -19,6 +19,8 @@ Infinity is an AI-powered loyalty system that revolutionizes how small businesse
 - 📊 Real-time analytics and tracking
 - 🔄 Seamless redemption process
 - 📱 Mobile and desktop accessibility
+- 🔐 Social login wallet creation with Privy
+- 🛡️ Secure wallet data storage with Nillion
 
 ## 🚀 Quick Start
 
@@ -74,6 +76,7 @@ graph LR
 - Eliza OS Platform
 - Anthropic Claude Model
 - Custom AI Plugins
+- Social Wallet Creation Plugin (Privy + Nillion)
 
 ### Frontend
 - React/Vite
@@ -152,12 +155,13 @@ The system provides:
 
 ## 🛡️ Security Features
 
-- Secure wallet integration
+- Secure wallet integration with Privy social login
 - Smart contract auditing
 - Automated verification
 - Fraud prevention
-- Data encryption
+- Data encryption with Nillion
 - Access control
+- Secure wallet data storage
 
 ## 🤝 Contributing
 

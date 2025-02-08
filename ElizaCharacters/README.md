@@ -1,5 +1,5 @@
 <div align="center">
-<img src="../public/placeholder-logo.svg" alt="Infinity Characters Logo" width="200"/>
+<img src="../public/logo.png" alt="Infinity Characters Logo" width="200"/>
 
 # Infinity AI Characters
 
@@ -61,6 +61,17 @@ This directory contains the character definitions for Infinity's AI agents. Each
 - **Topics**: Rewards, Tokenomics, Distribution Systems, Analytics
 - **Style**: Efficient and systematic, focused on reward optimization
 
+### Social Wallet Agent
+- **Purpose**: Facilitates Web3 wallet creation through social login
+- **Key Features**:
+  - 🔑 Social login wallet creation via Privy
+  - 🛡️ Secure data storage with Nillion
+  - 🔄 Seamless Web3 onboarding
+  - 👥 Business and customer wallet support
+  - 🌐 Base Sepolia network integration
+- **Topics**: Web3 Wallets, Social Authentication, Blockchain Security, Data Privacy
+- **Style**: User-friendly and security-focused, making Web3 accessible
+
 ## ⚙️ Configuration
 
 Each character is defined in a JSON file with the following structure:
@@ -76,7 +87,7 @@ Each character is defined in a JSON file with the following structure:
       "model": "en_GB-alan-medium"
     }
   },
-  "plugins": ["plugin-names"],
+  "plugins": ["plugin-names", "@elizaos/plugin-infinity-privy-nillion"],
   "bio": ["Character background"],
   "lore": ["Character history"],
   "topics": ["Areas of expertise"],

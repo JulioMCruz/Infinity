@@ -1,5 +1,5 @@
 <div align="center">
-<img src="../public/placeholder-logo.svg" alt="Infinity Plugins" width="200"/>
+<img src="../public/logo.png" alt="Infinity Plugins" width="200"/>
 
 # Infinity Eliza Plugins
 
@@ -68,6 +68,22 @@ Sales management plugin
   - `getSales`: Retrieves sales data
 - **Services**: Sales-specific services
 
+### plugin-infinity-privy-nillion
+Social wallet creation and secure storage plugin
+- **Purpose**: Manages Web3 wallet creation through social login
+- **Key Features**:
+  - 🔑 Social login integration with Privy
+  - 🛡️ Secure data storage with Nillion
+  - 👥 Business and customer wallet support
+  - 🔒 Encrypted wallet data management
+  - 🌐 Base Sepolia network integration
+- **Main Actions**:
+  - `createSocialWallet`: Creates wallets using social login
+- **Security**:
+  - Privy authentication
+  - Nillion encrypted storage
+  - Environment validation
+
 ## 🚀 Installation
 
 To use these plugins in your Eliza OS project:
@@ -85,6 +101,9 @@ npm install @elizaos/plugin-insights
 
 # Sales
 npm install @elizaos/plugin-sales
+
+# Social Wallet
+npm install @elizaos/plugin-infinity-privy-nillion
 ```
 
 2. Add to your character configuration:
@@ -94,7 +113,8 @@ npm install @elizaos/plugin-sales
     "@elizaos/plugin-infinity",
     "@elizaos/plugin-infinity-agentkit",
     "@elizaos/plugin-insights",
-    "@elizaos/plugin-sales"
+    "@elizaos/plugin-sales",
+    "@elizaos/plugin-infinity-privy-nillion"
   ]
 }
 ```

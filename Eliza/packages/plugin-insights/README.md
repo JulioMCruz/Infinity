@@ -1,112 +1,167 @@
-# @eliza/plugin-insights
+# @elizaos/plugin-insights
 
-Plugin para obtener métricas y análisis de rendimiento de la plataforma EthAgentic en Eliza.
+A plugin for retrieving and analyzing platform performance insights from the EthAgentic platform.
 
-## Instalación
+## Features
+
+- Real-time platform metrics retrieval
+- Trend analysis and visualization
+- Formatted insights reporting with visual indicators
+- Comprehensive error handling
+- Detailed logging system
+
+## Installation
 
 ```bash
-pnpm add @eliza/plugin-insights
+npm install @elizaos/plugin-insights
 ```
 
-## Configuración
+## Configuration
 
-Agrega el plugin a la configuración de tu personaje:
-
-```typescript
-import { ethAgenticInsightsPlugin } from '@eliza/plugin-insights';
-
-const character = {
-  plugins: [ethAgenticInsightsPlugin],
-};
+### Environment Variables
+Required configuration for EthAgentic platform:
+```env
+ETHAGENTIC_BASE_URL=your_api_base_url
 ```
 
-Configura las variables de entorno necesarias en los secrets del personaje:
-
-```typescript
-runtime.character.settings.secrets = {
-  baseUrl: 'http://localhost:3000' // URL base de la API de EthAgentic
-};
-```
-
-## Acciones Disponibles
+## Actions
 
 ### GET_INSIGHTS
-Obtiene métricas y análisis de rendimiento de la plataforma.
+Retrieves performance insights from the EthAgentic platform with the following features:
+
+- **Functionality**:
+  - Fetches current platform metrics
+  - Analyzes performance trends
+  - Provides visual trend indicators
+  - Calculates percentage changes
+
+- **Output Format**:
+  ```typescript
+  {
+    metric: string;     // Name of the metric
+    value: number;      // Current value
+    percentage: number; // Change percentage
+    trend: string;      // "up" | "down" | "stable"
+  }
+  ```
+
+- **Example Response**:
+  ```text
+  📊 Latest Insights Report 📊
+
+  📈 User Engagement
+   Value: 15,234
+   Change: +12.5%
+
+  📉 Average Response Time
+   Value: 250
+   Change: -8.3%
+
+  ➡️ Daily Active Users
+   Value: 5,678
+   Change: +0.2%
+  ```
+
+## Usage
 
 ```typescript
-const response = await runtime.processAction('GET_INSIGHTS');
-console.log('Platform insights:', response);
+import { insightsPlugin } from '@elizaos/plugin-insights';
+
+// Plugin will automatically handle:
+// - Metrics retrieval
+// - Trend analysis
+// - Response formatting
 ```
 
-Parámetros soportados:
-- timeRange: Rango temporal de los datos ("current", "daily", "weekly", "monthly")
-- metrics: Array de métricas específicas a consultar ("users", "transactions", "performance")
-- format: Formato de respuesta ("detailed", "summary")
+## Trend Indicators
 
-## Estructura de Respuestas
+The plugin uses visual indicators to represent trends:
+- 📈 Upward trend
+- 📉 Downward trend
+- ➡️ Stable trend
+- ❔ Unknown/undefined trend
 
-### Insights
-```json
-{
-  "success": true,
-  "data": [
-    {
-      "id": "1",
-      "metric": "Daily Active Users",
-      "value": 1500,
-      "trend": "up",
-      "percentage": 15
-    },
-    {
-      "id": "2",
-      "metric": "Transaction Volume",
-      "value": 2300,
-      "trend": "up",
-      "percentage": 23
-    },
-    {
-      "id": "3",
-      "metric": "Average Session Duration",
-      "value": 850,
-      "trend": "stable",
-      "percentage": 0
-    }
-  ]
-}
+## Error Handling
+
+The plugin includes robust error handling:
+- Configuration validation
+- API connection errors
+- Data format validation
+- Detailed error messages
+- Debug logging
+
+## Logging System
+
+Comprehensive logging system with different levels:
+- 🔵 Debug information
+- 🟢 Success messages
+- 🔴 Error details
+- Detailed stack traces for debugging
+
+## Best Practices
+
+1. **Data Analysis**
+   - Monitor trends over time
+   - Compare metrics against baselines
+   - Identify performance patterns
+
+2. **Error Handling**
+   - Implement proper error recovery
+   - Log errors for debugging
+   - Provide user-friendly error messages
+
+3. **Performance Monitoring**
+   - Regular metric checks
+   - Trend analysis
+   - Alert on significant changes
+
+## Examples
+
+### Basic Usage
+```typescript
+// Example of handling insights data
+callback({
+    text: `📊 Latest Insights Report 📊
+
+    📈 Platform Growth
+     Value: 25,000
+     Change: +15.3%
+
+    ➡️ User Retention
+     Value: 85.2
+     Change: +0.5%`,
+    content: insightsData.data
+});
 ```
 
-## Manejo de Errores
+## Command Recognition
 
-El plugin incluye manejo de errores para casos comunes:
+The plugin recognizes various command formats:
+- "fetch insights information"
+- "get insights data"
+- "retrieve insights metrics"
+- "analyze platform metrics"
+- "get performance insights"
 
-- Configuración faltante
-- Errores de red
-- Respuestas de error de la API
-- Métricas no disponibles o inválidas
+## Development
 
-Las respuestas de error seguirán este formato:
+### State Management
+- Proper state initialization
+- State updates handling
+- Context maintenance
+- Response formatting
 
-```json
-{
-  "success": false,
-  "error": "Mensaje descriptivo del error"
-}
-```
+### Data Processing
+- Trend calculation
+- Percentage change computation
+- Visual indicator selection
+- Data formatting
 
-## Desarrollo
+## Dependencies
 
-Para construir el plugin:
+- @elizaos/core
+- Additional platform-specific dependencies
 
-```bash
-pnpm build
-```
-
-Para ejecutar las pruebas:
-
-```bash
-pnpm test
-```
-
-## Licencia
+## License
 
 MIT

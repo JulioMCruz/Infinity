@@ -2,7 +2,7 @@ export const orgConfig = {
   // demo org credentials
   // in a production environment, make sure to put your org's credentials in environment variables
   orgCredentials: {
-    secretKey: process.env.NEXT_PUBLIC_NILLION_ORG_SECRET_KEY,
+    secretKey: process.env.NEXT_PUBLIC_NILLION_ORG_SK,
     orgDid: process.env.NEXT_PUBLIC_NILLION_ORG_DID,
   },
   // demo node config

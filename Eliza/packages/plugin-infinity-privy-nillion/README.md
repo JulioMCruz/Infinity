@@ -21,9 +21,29 @@ npm install @elizaos/plugin-infinity-privy-nillion
 ### Environment Variables
 Required configuration for Privy and Nillion integration:
 ```env
+# Privy Configuration
 PRIVY_APP_ID=your_privy_app_id
-PRIVY_SECRET=your_privy_secret
-NILLION_API_KEY=your_nillion_api_key
+PRIVY_APP_SECRET=your_privy_secret
+
+# Nillion Organization Configuration
+NILLION_ORG_SK=your_nillion_org_secret_key
+NILLION_ORG_DID=your_nillion_org_did
+
+# Nillion Nodes Configuration
+NILLION_NODE1_URL=your_nillion_node1_url
+NILLION_NODE1_DID=your_nillion_node1_did
+
+NILLION_NODE2_URL=your_nillion_node2_url
+NILLION_NODE2_DID=your_nillion_node2_did
+
+NILLION_NODE3_URL=your_nillion_node3_url
+NILLION_NODE3_DID=your_nillion_node3_did
+
+# Nillion Schema Configuration
+NILLION_SALE_SCHEMA_ID=your_nillion_sale_schema_id
+
+# Chain Configuration
+EVM_CHAIN_NAME=base-sepolia
 ```
 
 ## Actions

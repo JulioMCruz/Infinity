@@ -84,7 +84,9 @@ Social wallet creation and product sales management plugin
   - `createProductSale`: Creates product sales with automatic wallet association
 - **Security**:
   - Privy authentication
-  - Nillion encrypted storage
+  - Nillion encrypted storage with multi-node configuration
+  - Organization-level Nillion security
+  - Schema-based data validation
   - Environment validation
   - Secure transaction handling
 

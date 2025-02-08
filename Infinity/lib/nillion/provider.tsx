@@ -28,18 +28,26 @@ class NillionAccess {
             orgConfig.nodes,
             orgConfig.orgCredentials,
             SCHEMA_ID
-          );
-          await collection.init();
-      
-          const filterByUserWallet = {
-            userwallet: userWallet,
-          };    
-      
-          // Read the original record
-          const readRecord = await collection.readFromNodes(filterByUserWallet);        
-          //console.log('📚 Read original record:', readRecord);
+        );
 
-      return readRecord.length > 0;
+
+        console.log('🚀 ~ NillionAccess ~ checkUserExists ~ collection:', collection)
+
+        await collection.init();
+    
+        const filterByUserWallet = {
+        userwallet: userWallet,
+        };    
+
+        console.log('🚀 ~ NillionAccess ~ checkUserExists ~ filterByUserWallet:', filterByUserWallet)
+    
+        // Read the original record
+        const readRecord = await collection.readFromNodes(filterByUserWallet);        
+        //console.log('📚 Read original record:', readRecord);
+
+        //console.log('🚀 ~ NillionAccess ~ checkUserExists ~ readRecord:', readRecord)
+
+        return readRecord.length > 0;
 
     } catch (error) {
       console.error('Error checking user existence:', error);

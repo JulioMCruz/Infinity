@@ -55,7 +55,6 @@ import {
 import { zgPlugin } from "@elizaos/plugin-0g";
 import { footballPlugin } from "@elizaos/plugin-football";
 
-import { normalizeCharacter } from "@elizaos/plugin-di";
 import createGoatPlugin from "@elizaos/plugin-goat";
 import createZilliqaPlugin from "@elizaos/plugin-zilliqa";
 
@@ -939,13 +938,6 @@ export async function createAgent(
         throw new Error("Invalid TEE configuration");
     }
 
-    let goatPlugin: any | undefined;
-
-    if (getSecret(character, "EVM_PRIVATE_KEY")) {
-        goatPlugin = await createGoatPlugin((secret) =>
-            getSecret(character, secret)
-        );
-    }
 
     let zilliqaPlugin: any | undefined;
     if (getSecret(character, "ZILLIQA_PRIVATE_KEY")) {
@@ -1239,9 +1231,6 @@ const startAgents = async () => {
     if ((notOnchainJson && charactersArg) || hasValidRemoteUrls()) {
         characters = await loadCharacters(charactersArg);
     }
-
-    // Normalize characters for injectable plugins
-    characters = await Promise.all(characters.map(normalizeCharacter));
 
     elizaLogger.log("** startAgents ** characters");
 

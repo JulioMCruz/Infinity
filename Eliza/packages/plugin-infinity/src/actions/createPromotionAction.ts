@@ -83,7 +83,7 @@ function isLaunchTokenContent(
 export const launchTokenAction: Action = {
     name: "CREATE_PROMOTION",
     description: "Launch a new token with specified parameters",
-    similes: ["CREATE_TOKEN", "DEPLOY_TOKEN", "NEW_TOKEN"],
+    similes: ["CREATE_PROMOTION", "DEPLOY_PROMOTION", "NEW_PROMOTION"],
     validate: async (_runtime: IAgentRuntime, _message: Memory) => {
         return true;
     },

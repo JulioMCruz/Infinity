@@ -21,7 +21,7 @@ import { OmniflixPlugin } from "@elizaos/plugin-omniflix";
 import { JeeterClientInterface } from "@elizaos/client-simsai";
 import { XmtpClientInterface } from "@elizaos/client-xmtp";
 import { DirectClient } from "@elizaos/client-direct";
-import { agentKitPlugin } from "@elizaos/plugin-agentkit";
+import { infinityAgentKitPlugin } from "@elizaos/plugin-infinity-agentkit";
 import { gelatoPlugin } from "@elizaos/plugin-gelato";
 import { PrimusAdapter } from "@elizaos/plugin-primus";
 import { lightningPlugin } from "@elizaos/plugin-lightning";
@@ -54,7 +54,6 @@ import {
 import { zgPlugin } from "@elizaos/plugin-0g";
 import { footballPlugin } from "@elizaos/plugin-football";
 
-import { bootstrapPlugin } from "@elizaos/plugin-bootstrap";
 import { normalizeCharacter } from "@elizaos/plugin-di";
 import createGoatPlugin from "@elizaos/plugin-goat";
 import createZilliqaPlugin from "@elizaos/plugin-zilliqa";
@@ -1019,16 +1018,14 @@ export async function createAgent(
         character,
         // character.plugins are handled when clients are added
         plugins: [
-            bootstrapPlugin,
             salesPlugin,
             insightsPlugin,
             infinityPlugin,
             getSecret(character, "CDP_API_KEY_NAME") &&
             getSecret(character, "CDP_API_KEY_PRIVATE_KEY") &&
             getSecret(character, "CDP_AGENT_KIT_NETWORK")
-                ? agentKitPlugin
+                ? infinityAgentKitPlugin
                 : null,
-            bootstrapPlugin,
             getSecret(character, "CONFLUX_CORE_PRIVATE_KEY")
                 ? confluxPlugin
                 : null,

@@ -233,9 +233,6 @@ importers:
       '@elizaos/plugin-bnb':
         specifier: workspace:*
         version: link:../packages/plugin-bnb
-      '@elizaos/plugin-bootstrap':
-        specifier: workspace:*
-        version: link:../packages/plugin-bootstrap
       '@elizaos/plugin-chainbase':
         specifier: workspace:*
         version: link:../packages/plugin-chainbase

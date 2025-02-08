@@ -12,11 +12,10 @@ import {
     ActionExample,
     elizaLogger,
 } from "@elizaos/core";
-import type { CdpAgentkit } from "@coinbase/cdp-agentkit-core";
 import { CdpToolkit, Tool } from "@coinbase/cdp-langchain";
 import { getClient } from "../provider";
 
-export interface CreateTokenContent extends Content {
+export interface CreateRewardContent extends Content {
     name: string;
     uri: string;
     symbol: string;
@@ -24,46 +23,56 @@ export interface CreateTokenContent extends Content {
     initialSupply: number;
 }
 
-function isCreateTokenContent(content: any): content is CreateTokenContent {
-    elizaLogger.log("Content for createToken", content);
-    return (
-        typeof content.name === "string" &&
-        typeof content.uri === "string" &&
-        typeof content.symbol === "string" &&
-        typeof content.decimals === "number" &&
-        typeof content.initialSupply === "number"
-    );
-}
 
-const createTemplate = `Respond with a JSON markdown block containing only the extracted values. Use null for any values that cannot be determined.
+const launchRewardTemplate = `Respond with a JSON markdown block containing only the extracted values for creating a business reward. Use null for any values that cannot be determined.
 
 Example response:
 \`\`\`json
 {
-    "name": "Example Token",
-    "symbol": "EXMPL",
-    "uri": "https://raw.githubusercontent.com/solana-developers/opos-asset/main/assets/CompressedCoil/image.png",
+    "name": "RWRD2024",
+    "symbol": "RWD",
+    "maxTokens": "100",
     "decimals": 18,
-    "initialSupply": 1000000,
+    "duration": "2592000",
+    "baseURI": "https://rewards.business.com/metadata/"
 }
 \`\`\`
 
 {{recentMessages}}
 
-Given the recent messages, extract the following information about the requested token transfer:
-- Token name
-- Token symbol
-- Token uri
-- Token decimals
-- Token initialSupply
+Given the recent messages, extract the following information about the business reward:
+- Reward name (maximum 8 characters, alphanumeric)
+- Reward symbol (3-4 characters)
+- Maximum supply for this reward
+- Decimals (default is 18 for standard compatibility)
+- Base URI for reward metadata
+
+Remember:
+- Names must be 8 characters or less
+- Keep it simple and business-friendly
+- Focus on low quantity rewards for better management
+- Standard 18 decimals will be used by default
 
 Respond with a JSON markdown block containing only the extracted values.`;
 
 export default {
-    name: "CREATE_TOKEN",
-    similes: ["DEPLOY_TOKEN"],
-    validate: async (_runtime: IAgentRuntime, _message: Memory) => true,
-    description: "Create tokens",
+    name: "CREATE_REWARD",
+    similes: ["CREATE_REWARD", "DEPLOY_REWARD", "NEW_REWARD" ],
+    validate: async (_runtime: IAgentRuntime, message: Memory) => {
+        const text = message.content.text.toLowerCase();
+        if (!text.includes('token') && !text.includes('reward')) {
+            return false;
+        }
+        
+        // Extract potential token name from message
+        const nameMatch = text.match(/name\s+is\s+([a-zA-Z0-9]+)/i);
+        if (nameMatch && nameMatch[1].length > 8) {
+            return false;
+        }
+        
+        return true;
+    },
+    description: "Create business reward tokens with simplified management",
     handler: async (
         runtime: IAgentRuntime,
         message: Memory,
@@ -74,29 +83,31 @@ export default {
         try {
             const agentkit = await getClient();
             const cdpToolkit = new CdpToolkit(agentkit);
-            const toolCreateToken = cdpToolkit
+            const toolCreateReward = cdpToolkit
                 .getTools()
                 .map((t: Tool) => t)
-                .find((t: Tool) => t.name.toUpperCase() === "CREATE_TOKEN");
+                .find((t: Tool) => t.name.toUpperCase() === "DEPLOY_TOKEN");
 
             // Initialize or update state
             let currentState = state ?? (await runtime.composeState(message));
             currentState = await runtime.updateRecentMessageState(currentState);
-            // Generate transfer content
+
+            // Generate reward content
             const parameterContext = composeParameterContext(
-                toolCreateToken,
+                toolCreateReward,
                 currentState
             );
+
             const parameters = await generateParameters(
                 runtime,
                 parameterContext,
-                toolCreateToken
+                toolCreateReward
             );
+ 
+            const result = await toolCreateReward.call(parameters,  );
 
-            const result = await toolCreateToken.call(parameters)
-            
             const responseContext = composeResponseContext(
-                toolCreateToken,
+                toolCreateReward,
                 result,
                 currentState
             );
@@ -108,7 +119,7 @@ export default {
             const errorMessage =
                 error instanceof Error ? error.message : String(error);
             callback?.({
-                text: `Error executing action CREATE_TOKEN: ${errorMessage}`,
+                text: `Error executing action CREATE_REWARD: ${errorMessage}`,
                 content: { error: errorMessage },
             });
             return false;
@@ -119,33 +130,61 @@ export default {
             {
                 user: "{{user1}}",
                 content: {
-                    text: "Create token, name is Example Token, symbol is EXMPL, uri is https://raw.githubusercontent.com/solana-developers/opos-asset/main/assets/CompressedCoil/image.png, decimals is 9, initialSupply is 100000000000",
+                    text: "Create a reward called LOYAL24, symbol LOY for customer achievements",
                 },
             },
             {
                 user: "{{user2}}",
                 content: {
-                    text: "I'll create token now...",
-                    action: "CREATE_TOKEN",
+                    text: "I'll help you create a reward for customer achievements. The name LOYAL24 follows our 8-character limit perfectly.",
                 },
             },
             {
                 user: "{{user2}}",
                 content: {
-                    text: "Successfully create token 9jW8FPr6BSSsemWPV22UUCzSqkVdTp6HTyPqeqyuBbCa",
+                    text: "Creating your reward...",
+                    action: "CREATE_REWARD",
+                },
+            },
+            {
+                user: "{{user2}}",
+                content: {
+                    text: "Your reward LOYAL24: 0x9jW8FPr6BSSsemWPV22UUCzSqkVdTp6HTyPqeqyuBbCa has been created successfully! You can now use this to recognize customer achievements and milestones.",
                 },
             },
         ],
+        [
+            {
+                user: "{{user1}}",
+                content: {
+                    text: "r",
+                },
+            },
+            {
+                user: "{{user2}}",
+                content: {
+                    text: "I'll help you create a reward for skill certifications. BADGE24 is a clear, 8-character identifier.",
+                },
+            },
+            {
+                user: "{{user2}}",
+                content: {
+                    text: "Setting up your certification reward...",
+                    action: "CREATE_REWARD",
+                },
+            },
+            {
+                user: "{{user2}}",
+                content: {
+                    text: "Your reward BADGE24: 0x9jW8FPr6BSSsemWPV22UUCzSqkVdTp6HTyPqeqyuBbCa is ready! You can now issue these for completed certifications and achieved competencies.",
+                },
+            },
+        ]
     ] as ActionExample[][],
 } as Action;
 
 function composeParameterContext(tool: Tool, state: State): string {
-    const contextTemplate = `{{recentMessages}}
-
-    Given the recent messages, extract the following information for the action "${tool.name}":
-    ${tool.description}
-    `;
-    return composeContext({ state, template: contextTemplate });
+    return composeContext({ state, template: launchRewardTemplate });
 }
 
 async function generateParameters(
@@ -187,9 +226,11 @@ About {{agentName}}:
 # Capabilities
 Note that {{agentName}} is capable of reading/seeing/hearing various forms of media, including images, videos, audio, plaintext and PDFs. Recent attachments have been included above under the "Attachments" section.
 
-The action "${tool.name}" was executed successfully.
-Here is the result:
-${JSON.stringify(result)}
+The business reward has been created successfully.
+Details of your new reward:
+${JSON.stringify(result, null, 2)}
+
+You can now start distributing this reward to recognize achievements.
 
 {{actions}}
 

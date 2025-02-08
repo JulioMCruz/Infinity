@@ -54,7 +54,6 @@ import {
 import { zgPlugin } from "@elizaos/plugin-0g";
 import { footballPlugin } from "@elizaos/plugin-football";
 
-import { bootstrapPlugin } from "@elizaos/plugin-bootstrap";
 import { normalizeCharacter } from "@elizaos/plugin-di";
 import createGoatPlugin from "@elizaos/plugin-goat";
 import createZilliqaPlugin from "@elizaos/plugin-zilliqa";
@@ -1019,7 +1018,6 @@ export async function createAgent(
         character,
         // character.plugins are handled when clients are added
         plugins: [
-            bootstrapPlugin,
             salesPlugin,
             insightsPlugin,
             infinityPlugin,
@@ -1028,7 +1026,6 @@ export async function createAgent(
             getSecret(character, "CDP_AGENT_KIT_NETWORK")
                 ? infinityAgentKitPlugin
                 : null,
-            bootstrapPlugin,
             getSecret(character, "CONFLUX_CORE_PRIVATE_KEY")
                 ? confluxPlugin
                 : null,

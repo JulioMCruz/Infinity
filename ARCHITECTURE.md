@@ -17,7 +17,7 @@
 
 ## 🔍 System Overview
 
-Infinity is a blockchain-powered loyalty system that enables businesses to create and manage customer rewards programs using NFTs and smart contracts.
+Infinity is a blockchain-powered loyalty system that enables businesses to create and manage customer rewards programs using NFTs and smart contracts. The system includes social wallet creation through Privy and secure data storage with Nillion.
 
 ## 📐 Architecture Diagrams
 
@@ -47,6 +47,12 @@ graph TB
         Characters[AI Characters]
         Plugins[Eliza Plugins]
         Actions[Character Actions]
+        SocialWallet[Social Wallet Plugin]
+    end
+
+    subgraph Security["Security Layer"]
+        Privy[Privy Auth]
+        Nillion[Nillion Storage]
     end
 
     UI --> Web3
@@ -59,6 +65,10 @@ graph TB
     Plugins --> Web3
     Factory --> NFT
     NFT --> Rewards
+    SocialWallet --> Privy
+    SocialWallet --> Nillion
+    Privy --> Web3
+    Nillion --> DB
 ```
 
 ### Data Flow
@@ -67,9 +77,19 @@ graph TB
 sequenceDiagram
     participant Customer
     participant UI as Frontend UI
+    participant Privy as Privy Auth
+    participant Nillion as Nillion Storage
     participant API as Backend API
     participant BC as Blockchain
     participant AI as AI System
+
+    Customer->>UI: Request Wallet Creation
+    UI->>Privy: Social Login
+    Privy-->>UI: Auth Success
+    UI->>AI: Create Wallet Request
+    AI->>Nillion: Store Wallet Data
+    Nillion-->>AI: Storage Confirmation
+    AI-->>Customer: Wallet Created
 
     Customer->>UI: Makes Purchase
     UI->>API: Record Transaction
@@ -94,6 +114,18 @@ graph LR
     D --> F[Send Notification]
     E --> F
     F --> G[Customer Receives Reward]
+```
+
+### Social Wallet Creation Flow
+
+```mermaid
+graph TD
+    A[User] -->|Requests Wallet| B(Choose Social Login)
+    B --> C{Privy Auth}
+    C -->|Success| D[Create Wallet]
+    D --> E[Store in Nillion]
+    E --> F[Return Credentials]
+    F --> G[Ready for Use]
 ```
 
 ### Business Management Flow
@@ -131,7 +163,7 @@ graph TB
 - **UI Components**: Radix UI
 - **Styling**: Tailwind CSS
 - **Web3**: Ethers.js
-- **Authentication**: Privy
+- **Authentication**: Privy Social Login
 
 ### Backend
 - **Runtime**: Node.js 22.x
@@ -140,6 +172,7 @@ graph TB
 - **Architecture**: Clean Architecture
 - **Security**: Helmet, Rate Limiting
 - **Logging**: Winston
+- **Storage**: Nillion Secure Storage
 
 ### Blockchain
 - **Language**: Solidity ^0.8.0
@@ -152,7 +185,9 @@ graph TB
 - **Platform**: Eliza OS
 - **Model**: Anthropic Claude
 - **Voice**: Alan Medium
-- **Plugins**: Custom TypeScript Plugins
+- **Plugins**: 
+  - Custom TypeScript Plugins
+  - Social Wallet Plugin (Privy + Nillion)
 
 ### Development Tools
 - **Version Control**: Git
@@ -171,13 +206,15 @@ graph TD
         C[Smart Contract Audits] --> D[Secure Deployment]
         E[Access Control] --> F[Data Protection]
         G[Input Validation] --> H[Error Handling]
+        I[Privy Auth] --> J[Social Login Security]
+        K[Nillion Storage] --> L[Encrypted Data]
     end
 
     subgraph Monitoring["System Monitoring"]
-        I[Performance Metrics]
-        J[Error Tracking]
-        K[Usage Analytics]
-        L[Security Alerts]
+        M[Performance Metrics]
+        N[Error Tracking]
+        O[Usage Analytics]
+        P[Security Alerts]
     end
 
     Security --> Monitoring
@@ -192,12 +229,14 @@ graph LR
         B[Caching]
         C[Database Optimization]
         D[Smart Contract Efficiency]
+        E[Distributed Storage]
     end
 
     subgraph Growth["Growth Support"]
-        E[Multiple Businesses]
-        F[High Transaction Volume]
-        G[Data Analytics]
+        F[Multiple Businesses]
+        G[High Transaction Volume]
+        H[Data Analytics]
+        I[Social Login Scale]
     end
 
     Scale --> Growth

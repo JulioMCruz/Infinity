@@ -1,5 +1,5 @@
 <div align="center">
-<img src="public/placeholder-logo.svg" alt="Infinity Logo" width="200"/>
+<img src="public/logo.png" alt="Infinity Logo" width="200"/>
 
 # Infinity Data Service
 

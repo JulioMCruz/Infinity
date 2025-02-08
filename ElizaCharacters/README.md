@@ -1,5 +1,5 @@
 <div align="center">
-<img src="../public/placeholder-logo.svg" alt="Infinity Characters Logo" width="200"/>
+<img src="../public/logo.png" alt="Infinity Characters Logo" width="200"/>
 
 # Infinity AI Characters
 

@@ -1,5 +1,5 @@
 <div align="center">
-<img src="public/placeholder-logo.svg" alt="Infinity Architecture" width="200"/>
+<img src="public/logo.png" alt="Infinity Architecture" width="200"/>
 
 # Infinity System Architecture
 

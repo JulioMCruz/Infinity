@@ -10,7 +10,7 @@
     "lint": "next lint"
   },
   "engines": {
-    "node": "22.11.0"
+    "node": "22.12.0"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",

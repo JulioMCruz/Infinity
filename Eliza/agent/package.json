@@ -20,7 +20,6 @@
     "dependencies": {
         "@elizaos/adapter-supabase": "workspace:*",
         "@elizaos/adapter-pglite": "workspace:*",
-        "@elizaos/adapter-discord": "workspace:*",
         "@elizaos/adapter-postgres": "workspace:*",
         "@elizaos/adapter-redis": "workspace:*",
         "@elizaos/adapter-sqlite": "workspace:*",
@@ -28,6 +27,7 @@
         "@elizaos/adapter-mongodb": "workspace:*",
         "@elizaos/client-auto": "workspace:*",
         "@elizaos/client-direct": "workspace:*",
+        "@elizaos/client-discord": "workspace:*",
         "@elizaos/client-farcaster": "workspace:*",
         "@elizaos/client-lens": "workspace:*",
         "@elizaos/client-telegram": "workspace:*",

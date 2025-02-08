@@ -132,7 +132,7 @@ export const createSocialWalletAction: Action = {
             };
 
             elizaLogger.debug("[CREATE_SOCIAL_WALLET] Generated wallet details:", mockWalletResponse);
-
+            
             // TODO: In production, this would:
             // 1. Create wallet using Privy's social login
             // 2. Store encrypted wallet data in Nillion

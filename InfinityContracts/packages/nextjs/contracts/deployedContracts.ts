@@ -5,9 +5,9 @@
 import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 
 const deployedContracts = {
-  31337: {
+  84532: {
     InfinityPromotion: {
-      address: "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
+      address: "0x592EfE1441C72b13bA0311f6C7C21576Fd352035",
       abi: [
         {
           inputs: [
@@ -821,7 +821,7 @@ const deployedContracts = {
       },
     },
     InfinityPromotionFactory: {
-      address: "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9",
+      address: "0x2C92aB970eFAAD5bcD8E327232DAF840821f334c",
       abi: [
         {
           inputs: [
@@ -1066,7 +1066,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     YourContract: {
-      address: "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
+      address: "0x4D0A455A5471Aa2ba096E91AEb8b20A4b195d98f",
       abi: [
         {
           inputs: [

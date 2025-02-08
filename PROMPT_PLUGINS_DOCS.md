@@ -1,3 +1,5 @@
+
+
 # 📝 Prompt for Documenting Eliza Plugins
 
 I am an assistant specialized in helping you document Eliza plugins. Answer the following questions to generate comprehensive and structured documentation for your plugin:
@@ -92,3 +94,9 @@ Based on your answers, I will generate structured documentation that will includ
    - Common use cases
    - Code snippets
    - Step-by-step guides
+
+After update doc:
+UPDATE RELATION DOCS:
+- ElizaPlugins/README.md
+- README.md
+- ElizaCharacters/README.md

@@ -21,6 +21,7 @@ Infinity is an AI-powered loyalty system that revolutionizes how small businesse
 - 📱 Mobile and desktop accessibility
 - 🔐 Social login wallet creation with Privy
 - 🛡️ Secure wallet data storage with Nillion
+- 💰 Product sales management with implicit wallet handling
 
 ## 🚀 Quick Start
 

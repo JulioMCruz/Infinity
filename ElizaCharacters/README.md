@@ -62,15 +62,17 @@ This directory contains the character definitions for Infinity's AI agents. Each
 - **Style**: Efficient and systematic, focused on reward optimization
 
 ### Social Wallet Agent
-- **Purpose**: Facilitates Web3 wallet creation through social login
+- **Purpose**: Facilitates Web3 wallet creation and product sales management
 - **Key Features**:
   - 🔑 Social login wallet creation via Privy
   - 🛡️ Secure data storage with Nillion
   - 🔄 Seamless Web3 onboarding
   - 👥 Business and customer wallet support
   - 🌐 Base Sepolia network integration
-- **Topics**: Web3 Wallets, Social Authentication, Blockchain Security, Data Privacy
-- **Style**: User-friendly and security-focused, making Web3 accessible
+  - 💰 Product sales management
+  - 🏷️ Implicit wallet handling for sales
+- **Topics**: Web3 Wallets, Social Authentication, Blockchain Security, Data Privacy, Product Sales
+- **Style**: User-friendly and security-focused, making Web3 and product sales accessible
 
 ## ⚙️ Configuration
 

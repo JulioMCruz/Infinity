@@ -9,6 +9,9 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "engines": {
+    "node": "22.11.0"
+  },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
     "@privy-io/react-auth": "^2.3.0",

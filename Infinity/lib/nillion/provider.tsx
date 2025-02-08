@@ -45,7 +45,7 @@ class NillionAccess {
         const readRecord = await collection.readFromNodes(filterByUserWallet);        
         //console.log('📚 Read original record:', readRecord);
 
-        console.log('🚀 ~ NillionAccess ~ checkUserExists ~ readRecord:', readRecord)
+        //console.log('🚀 ~ NillionAccess ~ checkUserExists ~ readRecord:', readRecord)
 
         return readRecord.length > 0;
 

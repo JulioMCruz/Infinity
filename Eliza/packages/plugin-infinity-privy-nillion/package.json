@@ -21,7 +21,13 @@
     "dependencies": {
         "@elizaos/core": "workspace:*",
         "@elizaos/plugin-tee": "workspace:*",
-        "tsup": "8.3.5"
+        "@nillion/nilql": "^0.0.0-alpha.10",
+        "@privy-io/server-auth": "^1.18.7",
+        "buffer": "^6.0.3",
+        "did-jwt": "^8.0.8",
+        "nillion-sv-wrappers": "^1.0.9",
+        "tsup": "8.3.5",
+        "uuid": "^11.0.5"
     },
     "scripts": {
         "build": "tsup --format esm --dts",

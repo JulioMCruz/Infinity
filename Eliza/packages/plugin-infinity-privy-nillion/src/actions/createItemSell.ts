@@ -11,6 +11,8 @@ import {
     elizaLogger,
 } from "@elizaos/core";
 import { validatePrivyNillionConfig } from "../environment";
+import {PrivyClient} from '@privy-io/server-auth';
+import { SecretVaultWrapper } from 'nillion-sv-wrappers';
 
 interface ItemSellContent {
     actionContent: string;
@@ -19,6 +21,7 @@ interface ItemSellContent {
 }
 
 interface ItemSellResponse {
+    saleId: string;
     actionContent: string;
     promotionName: string;
     amount: number;
@@ -170,14 +173,77 @@ export const createItemSellAction: Action = {
             }
 
             elizaLogger.info("[CREATE_PRODUCT_SALE] Creating product sale response");
+
+            // Create the wallet
+            const privy = new PrivyClient(config.privyAppId, config.privyAppSecret);
+            const {id, address, chainType} = await privy.walletApi.create({chainType: 'ethereum'});
+
+            console.log("Wallet created:", id, address, chainType);
+
+            const orgConfig = {
+                orgCredentials: {
+                  secretKey: config.nillionOrgSk,
+                  orgDid: config.nillionOrgDid,
+                },
+                nodes: [
+                  {
+                    url: config.nillionNodes[0].url,
+                    did: config.nillionNodes[0].did,
+                  },
+                  {
+                    url: config.nillionNodes[1].url,
+                    did: config.nillionNodes[1].did,
+                  },
+                  {
+                    url: config.nillionNodes[2].url,
+                    did: config.nillionNodes[2].did,
+                  },
+                ],
+              };
+
+              const collection = new SecretVaultWrapper(
+                orgConfig.nodes,
+                orgConfig.orgCredentials,
+                config.nillionSaleSchemaId
+            );
+
+            const data = [
+                {
+                    userwallet: address,
+                    name: content.promotionName, // will be encrypted to a $share
+                    privywalletaddress: { $allot: address }, // will be encrypted to a $share
+                    usdprice: { $allot: content.amount }, // will be encrypted to a $share
+                },
+              ];                
+
+            let saleId = ""
+
+              try {
+
+                // Initialize the collection
+                await collection.init();
+
+                // Store data
+                const dataWritten = await collection.writeToNodes(data);
+
+                saleId = dataWritten[0]._id;
+
+                console.log("Sale ID:", saleId);
+                
+              } catch (error) {
+                console.error("Error writing to nodes:", error);
+              }
+
+            
             // Create response with mock wallet address
-            const mockWalletAddress = "0x" + Array(40).fill(0).map(() => Math.floor(Math.random() * 16).toString(16)).join('');
+            //const mockWalletAddress = "0x" + Array(40).fill(0).map(() => Math.floor(Math.random() * 16).toString(16)).join('');
             
             const itemSellResponse: ItemSellResponse = {
+                saleId: saleId,
                 actionContent: content.actionContent,
                 promotionName: content.promotionName,
                 amount: content.amount,
-                walletAddress: mockWalletAddress,
+                walletAddress: address,
                 timestamp: new Date().toISOString()
             };
 

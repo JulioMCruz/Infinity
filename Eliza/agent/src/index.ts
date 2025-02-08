@@ -21,7 +21,7 @@ import { OmniflixPlugin } from "@elizaos/plugin-omniflix";
 import { JeeterClientInterface } from "@elizaos/client-simsai";
 import { XmtpClientInterface } from "@elizaos/client-xmtp";
 import { DirectClient } from "@elizaos/client-direct";
-import { agentKitPlugin } from "@elizaos/plugin-agentkit";
+import { infinityAgentKitPlugin } from "@elizaos/plugin-infinity-agentkit";
 import { gelatoPlugin } from "@elizaos/plugin-gelato";
 import { PrimusAdapter } from "@elizaos/plugin-primus";
 import { lightningPlugin } from "@elizaos/plugin-lightning";
@@ -1026,7 +1026,7 @@ export async function createAgent(
             getSecret(character, "CDP_API_KEY_NAME") &&
             getSecret(character, "CDP_API_KEY_PRIVATE_KEY") &&
             getSecret(character, "CDP_AGENT_KIT_NETWORK")
-                ? agentKitPlugin
+                ? infinityAgentKitPlugin
                 : null,
             bootstrapPlugin,
             getSecret(character, "CONFLUX_CORE_PRIVATE_KEY")

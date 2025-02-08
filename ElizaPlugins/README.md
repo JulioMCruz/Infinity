@@ -69,20 +69,26 @@ Sales management plugin
 - **Services**: Sales-specific services
 
 ### plugin-infinity-privy-nillion
-Social wallet creation and secure storage plugin
-- **Purpose**: Manages Web3 wallet creation through social login
+Social wallet creation and product sales management plugin
+- **Purpose**: Manages Web3 wallet creation and product sales with secure storage
 - **Key Features**:
   - 🔑 Social login integration with Privy
   - 🛡️ Secure data storage with Nillion
   - 👥 Business and customer wallet support
   - 🔒 Encrypted wallet data management
   - 🌐 Base Sepolia network integration
+  - 💰 Product sales management
+  - 🏷️ Implicit wallet handling
 - **Main Actions**:
   - `createSocialWallet`: Creates wallets using social login
+  - `createProductSale`: Creates product sales with automatic wallet association
 - **Security**:
   - Privy authentication
-  - Nillion encrypted storage
+  - Nillion encrypted storage with multi-node configuration
+  - Organization-level Nillion security
+  - Schema-based data validation
   - Environment validation
+  - Secure transaction handling
 
 ## 🚀 Installation
 

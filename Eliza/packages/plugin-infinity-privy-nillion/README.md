@@ -1,14 +1,14 @@
 # @elizaos/plugin-infinity-privy-nillion
 
-A plugin for Infinity's AI-powered loyalty system that handles social wallet creation and secure data storage.
+A plugin for managing social wallet creation and product sales using Privy for authentication and Nillion for secure data storage.
 
 ## Features
 
-- Create Web3 wallets using social login via Privy
-- Support for both business owners and customers
-- Secure wallet data storage with Nillion
-- Integration with Base Sepolia network
-- Part of Infinity's AI-powered loyalty system
+- Social wallet creation with multiple authentication methods
+- Product sale management with implicit wallet understanding
+- Secure data storage using Nillion
+- Comprehensive error handling and validation
+- Detailed logging system
 
 ## Installation
 
@@ -18,58 +18,164 @@ npm install @elizaos/plugin-infinity-privy-nillion
 
 ## Configuration
 
-Required environment variables:
-
+### Environment Variables
+Required configuration for Privy and Nillion integration:
 ```env
 PRIVY_APP_ID=your_privy_app_id
-PRIVY_APP_SECRET=your_privy_secret
-NILLION_API_KEY=your_nillion_key
-```
-
-## Basic Usage
-
-```typescript
-import { infinityPlugin } from '@elizaos/plugin-infinity-privy-nillion';
-
-// The plugin handles social wallet creation through natural language
-// Example: "Create a new wallet for my business using Google login"
+PRIVY_SECRET=your_privy_secret
+NILLION_API_KEY=your_nillion_api_key
 ```
 
 ## Actions
 
 ### CREATE_SOCIAL_WALLET
-Creates a new wallet using Privy's social login and stores data securely in Nillion:
+Creates a new wallet using social login via Privy with the following features:
 
-Parameters extracted from conversation:
-- Social login method (Google, Twitter, etc.)
-- User type (business/customer)
-- Chain preference (defaults to Base Sepolia)
+- **Functionality**:
+  - Social login integration (Google, Twitter, etc.)
+  - User type specification (business/customer)
+  - Chain preference configuration
+  - Secure wallet creation
 
-Returns:
-- Wallet address
-- User type
-- Chain information
-- Social login method used
+- **Output Format**:
+  ```typescript
+  {
+    address: string;      // Wallet address
+    userType: string;     // "business" or "customer"
+    chain: {
+      name: string;       // Chain name
+      id: number;        // Chain ID
+    };
+    socialMethod: string; // Authentication method used
+  }
+  ```
 
-Example conversations:
+- **Example Response**:
+  ```text
+  Successfully created wallet using google login
+  Address: 0x1234...5678
+  User Type: business
+  Chain: base-sepolia
+  ```
+
+### CREATE_PRODUCT_SALE
+Creates a new product sale with implicit wallet understanding:
+
+- **Functionality**:
+  - Product sale creation
+  - Automatic wallet association
+  - Price and promotion management
+  - Transaction timestamping
+
+- **Output Format**:
+  ```typescript
+  {
+    actionContent: string;   // Sale action description
+    promotionName: string;   // Product name
+    amount: number;          // Sale amount
+    walletAddress: string;   // Associated wallet
+    timestamp: string;       // Transaction timestamp
+  }
+  ```
+
+- **Example Response**:
+  ```text
+  Successfully created product sale
+  Action: I want to sell for a product
+  Product: Gold Membership
+  Amount: $299.99
+  Wallet: 0x1234...5678
+  ```
+
+## Usage
+
+```typescript
+import { createSocialWalletAction, createItemSellAction } from '@elizaos/plugin-infinity-privy-nillion';
+
+// Plugin will automatically handle:
+// - Social authentication
+// - Wallet creation
+// - Product sale management
+// - Data encryption and storage
 ```
-User: "Create a new wallet for my business using Google login"
-User: "I want to sign up as a customer with my Twitter account"
+
+## Error Handling
+
+The plugin includes comprehensive error handling:
+- Input validation
+- Authentication errors
+- Transaction validation
+- Wallet creation errors
+- Detailed error messages with context
+- Debug logging for troubleshooting
+
+## Logging System
+
+Detailed logging system with different contexts:
+- 🔵 Debug information
+- 🟢 Success messages
+- 🔴 Error details
+- Transaction tracking
+- Wallet creation events
+
+## Best Practices
+
+1. **Wallet Management**
+   - Secure storage of credentials
+   - Regular validation of wallet state
+   - Proper error recovery
+
+2. **Product Sales**
+   - Clear product naming
+   - Accurate price specification
+   - Complete transaction details
+
+3. **Security**
+   - Secure social authentication
+   - Encrypted data storage
+   - Protected wallet operations
+
+## Examples
+
+### Social Wallet Creation
+```typescript
+// Example of creating a social wallet
+"I want to sign up as a business using Google login"
 ```
 
-## Integration with Infinity
+### Product Sale Creation
+```typescript
+// Example of creating a product sale
+"I want to sell for a product called 'Gold Membership' for $299.99"
+```
 
-This plugin is part of the Infinity loyalty system and handles the "Connect Your Wallet" feature, specifically focusing on social login for new Web3 users. It supports:
+## Command Recognition
 
-- Easy onboarding for non-Web3 users
-- Secure wallet creation
-- Integration with the loyalty system
-- Support for both business owners and customers
+The plugin recognizes various command formats:
+- "create wallet with social login"
+- "sign up using social account"
+- "sell for a product"
+- "create a sale for a product"
+
+## Development
+
+### State Management
+- Proper state initialization
+- Context maintenance
+- Transaction tracking
+- Response formatting
+
+### Data Processing
+- Input validation
+- Price formatting
+- Wallet address generation
+- Transaction timestamping
 
 ## Dependencies
 
 - @elizaos/core
-- @elizaos/plugin-tee
+- Privy SDK
+- Nillion SDK
 
 ## License
 

@@ -3,7 +3,25 @@
 # Colors for better readability
 GREEN='\033[0;32m'
 BLUE='\033[0;34m'
+YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
+
+# Eliza directory path (relative to script location)
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ELIZA_DIR="$SCRIPT_DIR/../Eliza"
+
+# Setup and start client
+echo -e "${YELLOW}Installing dependencies...${NC}"
+cd "$ELIZA_DIR" && pnpm install --no-frozen-lockfile
+
+echo -e "${YELLOW}Building project...${NC}"
+pnpm build
+
+echo -e "${YELLOW}Starting client...${NC}"
+pnpm start:client &
+
+# Wait for client to start
+sleep 5
 
 # Function to display available characters
 show_characters() {
@@ -19,7 +37,7 @@ show_characters() {
 run_character() {
     local char_path=$1
     echo -e "${GREEN}Starting character: $char_path${NC}"
-    npx eliza start characters/$char_path
+    cd "$ELIZA_DIR" && npx eliza start characters/$char_path
 }
 
 # Main menu loop
@@ -39,12 +57,14 @@ while true; do
             ;;
         4)
             echo -e "${GREEN}Starting all characters...${NC}"
+            cd "$ELIZA_DIR"
             npx eliza start characters/sales.character.json &
             npx eliza start characters/insights.character.json &
             npx eliza start characters/infinity-agentkit.character.json &
             ;;
         q|Q)
             echo "Exiting..."
+            pkill -f "pnpm start:client"
             exit 0
             ;;
         *)

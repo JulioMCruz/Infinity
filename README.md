@@ -164,6 +164,18 @@ The system provides:
 - Access control
 - Secure wallet data storage
 
+## 🏆 ETHGlobal Agents Tracks
+
+[📊 View Current Status](STATUS.md)
+
+<div align="center">
+
+| [![Coinbase](https://ethglobal.b-cdn.net/organizations/rpi4f/square-logo/default.png)](TRACKS.md#coinbase-developer-platform-tracks-20000) | [![Base](https://ethglobal.b-cdn.net/organizations/h5ps8/square-logo/default.png)](TRACKS.md#base-track-10000) | [![Privy](https://ethglobal.b-cdn.net/organizations/ijybm/square-logo/default.png)](TRACKS.md#privy-track-5000) | [![The Graph](https://ethglobal.b-cdn.net/organizations/pfyco/square-logo/default.png)](TRACKS.md#the-graph-track-5000) | [![Nillion](https://ethglobal.b-cdn.net/organizations/0accc/square-logo/default.png)](TRACKS.md#nillion-track-5000) |
+|:---:|:---:|:---:|:---:|:---:|
+| [**Coinbase**](TRACKS.md#coinbase-developer-platform-tracks-20000) | [**Base**](TRACKS.md#base-track-10000) | [**Privy**](TRACKS.md#privy-track-5000) | [**The Graph**](TRACKS.md#the-graph-track-5000) | [**Nillion**](TRACKS.md#nillion-track-5000) |
+
+</div>
+
 ## 🤝 Contributing
 
 See our [Contributing Guide](CONTRIBUTING.md) for details on:

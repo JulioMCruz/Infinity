@@ -26,6 +26,7 @@ export async function getAgentKitActions({
     getClient,
 }: GetAgentKitActionsParams): Promise<Action[]> {
     const agentkit = await getClient();
+    
     const cdpToolkit = new CdpToolkit(agentkit);
     const tools = cdpToolkit.getTools();
     const actions = tools.map((tool: Tool) => ({
@@ -37,7 +38,7 @@ export async function getAgentKitActions({
             runtime: IAgentRuntime,
             message: Memory,
             state: State | undefined,
-            options?: Record<string, unknown>,
+            _options?: Record<string, unknown>,
             callback?: HandlerCallback
         ): Promise<boolean> => {
             try {
@@ -93,7 +94,7 @@ export async function getAgentKitActions({
 
 async function executeToolAction(
     tool: Tool,
-    parameters: any,
+    parameters: unknown,
     client: CdpAgentkit
 ): Promise<unknown> {
     const toolkit = new CdpToolkit(client);
@@ -107,7 +108,7 @@ async function executeToolAction(
     return await selectedTool.call(parameters);
 }
 
-function composeParameterContext(tool: any, state: State): string {
+function composeParameterContext(tool: Tool, state: State): string {
     const contextTemplate = `{{recentMessages}}
 
 Given the recent messages, extract the following information for the action "${tool.name}":

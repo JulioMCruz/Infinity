@@ -1,10 +1,11 @@
 import type { Plugin } from "@elizaos/core";
 import { walletProvider, getClient } from "./provider";
 import { getAgentKitActions } from "./actions";
+import createToken from "./actions/createToken.ts";
 
 // Initial banner
 console.log("\n┌════════════════════════════════════════┐");
-console.log("│          AGENTKIT PLUGIN               │");
+console.log("│          INFINITY AGENTKIT PLUGIN               │");
 console.log("├────────────────────────────────────────┤");
 console.log("│  Initializing AgentKit Plugin...       │");
 console.log("│  Version: 0.0.1                        │");
@@ -32,13 +33,14 @@ const initializeActions = async () => {
     }
 };
 
-export const agentKitPlugin: Plugin = {
-    name: "[AgentKit] Integration",
-    description: "AgentKit integration plugin",
-    providers: [walletProvider],
+
+export const infinityAgentKitPlugin: Plugin = {
+    name: "infinity agentkit",
+    description: "infinity agentkit plugin",
+    actions: [createToken],
     evaluators: [],
-    services: [],
-    actions: await initializeActions(),
+    providers: [walletProvider],
 };
 
-export default agentKitPlugin;
+
+export default infinityAgentKitPlugin;

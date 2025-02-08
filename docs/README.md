@@ -123,7 +123,7 @@ We welcome contributions to any part of the Infinity ecosystem. Please refer to 
 
 ### 📄 License
 
-This project is licensed under the OWQLO License - see the [LICENSE](../LICENSE) file for details.
+This project is licensed under the INFINITY License - see the [LICENSE](../LICENSE) file for details.
 
 ---
 

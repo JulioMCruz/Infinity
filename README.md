@@ -169,7 +169,7 @@ See our [Contributing Guide](CONTRIBUTING.md) for details on:
 
 ## 📄 License
 
-This project is licensed under the OWQLO License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the INFINITY License - see the [LICENSE](LICENSE) file for details.
 
 ---
 

@@ -225,7 +225,7 @@ We follow [Conventional Commits](https://www.conventionalcommits.org/):
 
 ## 📄 License
 
-This project is under OWQLO License - see the [LICENSE.md](LICENSE.md) file for details.
+This project is under INFINITY License - see the [LICENSE.md](LICENSE.md) file for details.
 
 ---
 

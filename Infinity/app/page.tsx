@@ -12,6 +12,32 @@ export default function Page() {
   const { login, authenticated, ready, user,logout } = usePrivy()
   const router = useRouter()
 
+  const evaluateLogin = async () => {
+    try {
+
+      const wallet = user?.wallet?.address || ''
+      console.log('🚀 ~ evaluateLogin ~ wallet:', wallet)
+
+      const response = await fetch('/api/user/exists', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ wallet: wallet }),
+      })
+      const data = await response.json()
+      console.log('🚀 ~ evaluateLogin ~ data:', data)
+
+      if (data.exists) {
+        router.push('/dashboard')
+      } else {
+        router.push('/dashboard/profile')
+      }
+    } catch (error) {
+      console.error('Error checking user existence:', error)
+    }
+  }
+
   return (
     <main className="min-h-screen bg-[#000510] text-white relative overflow-hidden">
       {/* Background Image */}
@@ -63,12 +89,12 @@ export default function Page() {
             )}
 
             {authenticated && (
-            <Link
-              href="/dashboard"
+            <Button
+              onClick={evaluateLogin}
               className="px-4 py-2 text-sm font-medium text-white rounded bg-gradient-to-r from-[#4169E1] to-[#9c72fe] hover:from-[#3a5fcf] hover:to-[#8b65e3] transition-all duration-200 ease-in-out"
             >
               Launch App
-            </Link>
+            </Button>
             )}
             {authenticated && (
             <Button

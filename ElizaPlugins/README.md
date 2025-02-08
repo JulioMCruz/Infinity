@@ -69,19 +69,26 @@ Sales management plugin
 - **Services**: Sales-specific services
 
 ### plugin-infinity-privy-nillion
-Social wallet creation and product sales management plugin
-- **Purpose**: Manages Web3 wallet creation and product sales with secure storage
+Social wallet creation and food truck sales management plugin
+- **Purpose**: Manages Web3 wallet creation and food truck menu items with secure storage
 - **Key Features**:
   - 🔑 Social login integration with Privy
   - 🛡️ Secure data storage with Nillion
   - 👥 Business and customer wallet support
   - 🔒 Encrypted wallet data management
   - 🌐 Base Sepolia network integration
-  - 💰 Product sales management
+  - 🚚 Food truck menu management
+  - 🍽️ Last-message-only processing
+  - 💰 Smart pricing system
   - 🏷️ Implicit wallet handling
 - **Main Actions**:
   - `createSocialWallet`: Creates wallets using social login
-  - `createProductSale`: Creates product sales with automatic wallet association
+  - `createProductSale`: Creates food truck menu items with these features:
+    - Only processes the last message in conversations
+    - Step-by-step validation with food-specific guidance
+    - Automatic wallet association
+    - Real-time sale ID generation
+    - Food truck focused interface with emojis
 - **Security**:
   - Privy authentication
   - Nillion encrypted storage with multi-node configuration
@@ -89,6 +96,11 @@ Social wallet creation and product sales management plugin
   - Schema-based data validation
   - Environment validation
   - Secure transaction handling
+- **Example Usage**:
+  ```typescript
+  // Adding a new food truck menu item
+  "I want to sell a product called 'Gourmet Street Tacos' for $12.99"
+  ```
 
 ## 🚀 Installation
 

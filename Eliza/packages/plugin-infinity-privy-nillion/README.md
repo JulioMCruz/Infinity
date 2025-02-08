@@ -79,32 +79,43 @@ Creates a new wallet using social login via Privy with the following features:
   ```
 
 ### CREATE_PRODUCT_SALE
-Creates a new product sale with implicit wallet understanding:
+Creates a new food truck product sale with implicit wallet understanding:
 
 - **Functionality**:
-  - Product sale creation
+  - Food truck menu item creation 🚚
   - Automatic wallet association
-  - Price and promotion management
+  - Price management
   - Transaction timestamping
+  - Last message processing only
+
+- **Key Features**:
+  - Processes only the most recent message in the conversation
+  - Ignores previous context for accurate order processing
+  - Step-by-step validation with food-specific guidance
+  - Food truck focused interface with relevant emojis
 
 - **Output Format**:
   ```typescript
   {
     actionContent: string;   // Sale action description
-    promotionName: string;   // Product name
+    promotionName: string;   // Food item name
     amount: number;          // Sale amount
     walletAddress: string;   // Associated wallet
+    saleId: string;         // Unique sale identifier
     timestamp: string;       // Transaction timestamp
   }
   ```
 
 - **Example Response**:
   ```text
-  Successfully created product sale
-  Action: I want to sell for a product
-  Product: Gold Membership
-  Amount: $299.99
-  Wallet: 0x1234...5678
+  ✨ Food Item Added Successfully!
+  🎯 Action: I want to sell a product
+  🍽️ Item: Gourmet Street Tacos
+  💰 Price: $12.99
+  🔐 Wallet: 0x1234...5678
+  🏷️ Sale ID: abc123
+  
+  Your food item is now ready for customers! 🚚
   ```
 
 ## Usage
@@ -163,10 +174,12 @@ Detailed logging system with different contexts:
 "I want to sign up as a business using Google login"
 ```
 
-### Product Sale Creation
+### Food Truck Product Sale Creation
 ```typescript
-// Example of creating a product sale
-"I want to sell for a product called 'Gold Membership' for $299.99"
+// Examples of creating food truck items
+"I want to sell a product called 'Gourmet Street Tacos' for $12.99"
+"Create a sale for my 'Loaded Burger Combo' for $15.99"
+"Sell my 'Signature Food Truck Bowl' for $13.99"
 ```
 
 ## Command Recognition
@@ -174,8 +187,9 @@ Detailed logging system with different contexts:
 The plugin recognizes various command formats:
 - "create wallet with social login"
 - "sign up using social account"
-- "sell for a product"
-- "create a sale for a product"
+- "sell a food item"
+- "create a sale for my menu item"
+- "add item to food truck menu"
 
 ## Development
 

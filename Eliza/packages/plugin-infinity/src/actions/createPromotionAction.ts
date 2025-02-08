@@ -80,7 +80,7 @@ function isLaunchTokenContent(
     );
 }
 
-export const launchTokenAction: Action = {
+export const createPromotionAction: Action = {
     name: "CREATE_PROMOTION",
     description: "Launch a new token with specified parameters",
     similes: ["CREATE_PROMOTION", "DEPLOY_PROMOTION", "NEW_PROMOTION"],

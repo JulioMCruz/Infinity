@@ -11,7 +11,7 @@ import {
 } from "@elizaos/core";
 import { initWalletProvider } from "../providers/wallet";
 import { InfinityPromotionFactoryAbi } from "../lib/InfinityContratsAbis";
-import { hardhat } from "viem/chains";
+import * as viemChains from "viem/chains";
 import { validateInfinityConfig } from "../environment";
 import { Address } from "viem";
 
@@ -80,10 +80,10 @@ function isLaunchTokenContent(
     );
 }
 
-export const launchTokenAction: Action = {
+export const createPromotionAction: Action = {
     name: "CREATE_PROMOTION",
     description: "Launch a new token with specified parameters",
-    similes: ["CREATE_TOKEN", "DEPLOY_TOKEN", "NEW_TOKEN"],
+    similes: ["CREATE_PROMOTION", "DEPLOY_PROMOTION", "NEW_PROMOTION"],
     validate: async (_runtime: IAgentRuntime, _message: Memory) => {
         return true;
     },
@@ -106,9 +106,7 @@ export const launchTokenAction: Action = {
         const walletClient = walletProvider.getWalletClient("polygonAmoy");
 
         try {
-            const infinityConfig = await validateInfinityConfig(runtime);
-
-            // Generate token details from context
+            const envConfig = await validateInfinityConfig(runtime);
             const context = composeContext({
                 state,
                 template: launchTokenTemplate,
@@ -154,7 +152,7 @@ export const launchTokenAction: Action = {
 
             
             // Get contract instance
-            const tokenLauncherAddress = infinityConfig.infinityPromotionFactoryContractAddress
+            const tokenLauncherAddress = envConfig.infinityPromotionFactoryContractAddress
 
             while (!tokenLauncherAddress) {
                 const missingTokenConfig = await generateObjectDeprecated({
@@ -182,7 +180,7 @@ export const launchTokenAction: Action = {
                          promotionConfig.duration,
                          promotionConfig.baseURI,
                 ],
-                chain: hardhat,
+                chain: viemChains[envConfig.chainName],
                 account: walletClient.account,
             });
 

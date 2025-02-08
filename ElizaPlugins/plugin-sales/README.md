@@ -1,115 +1,144 @@
-# @eliza/plugin-ethagentic-sales
+# @elizaos/plugin-sales
 
-Plugin para integrar datos de ventas e insights de la plataforma EthAgentic en Eliza.
+A plugin for retrieving and managing sales data from the EthAgentic platform.
 
-## Instalación
+## Features
+
+- Fetch real-time sales data
+- Formatted sales reporting
+- Comprehensive error handling
+- Detailed logging system
+- EthAgentic platform integration
+
+## Installation
 
 ```bash
-pnpm add @eliza/plugin-ethagentic-sales
+npm install @elizaos/plugin-sales
 ```
 
-## Configuración
+## Configuration
 
-Agrega el plugin a la configuración de tu personaje:
-
-```typescript
-import { ethAgenticSalesPlugin } from '@eliza/plugin-ethagentic-sales';
-
-const character = {
-  plugins: [ethAgenticSalesPlugin],
-};
+### Environment Variables
+Required configuration for EthAgentic platform:
+```env
+ETHAGENTIC_BASE_URL=your_api_base_url
 ```
 
-Configura las variables de entorno necesarias en los secrets del personaje:
-
-```typescript
-runtime.character.settings.secrets = {
-  baseUrl: 'http://localhost:3000' // URL base de la API de EthAgentic
-};
-```
-
-## Acciones Disponibles
+## Actions
 
 ### GET_SALES
-Obtiene datos de ventas de la plataforma EthAgentic.
+Retrieves sales data from the EthAgentic platform with the following features:
+
+- **Functionality**:
+  - Fetches current sales data
+  - Formats sales information for easy reading
+  - Provides detailed error reporting
+  - Includes transaction timestamps
+
+- **Output Format**:
+  ```typescript
+  {
+    product: string;     // Product name/identifier
+    amount: number;      // Sale amount in USD
+    date: string;        // Transaction date
+  }
+  ```
+
+- **Example Response**:
+  ```text
+  Here are the latest sales figures:
+
+  🏷️ Product: Product A
+  💰 Amount: $1000
+  📅 Date: 2024-02-08
+
+  🏷️ Product: Product B
+  💰 Amount: $750
+  📅 Date: 2024-02-08
+  ```
+
+## Usage
 
 ```typescript
-const response = await runtime.processAction('GET_SALES');
-console.log('Sales data:', response);
+import { salesPlugin } from '@elizaos/plugin-sales';
+
+// Plugin will automatically handle:
+// - Sales data retrieval
+// - Response formatting
+// - Error handling
 ```
 
-### GET_INSIGHTS
-Obtiene métricas e insights de la plataforma.
+## Error Handling
 
+The plugin includes robust error handling:
+- Configuration validation
+- API connection errors
+- Data format validation
+- Detailed error messages
+- Debug logging
+
+## Logging System
+
+Comprehensive logging system with different levels:
+- 🔵 Debug information
+- 🟢 Success messages
+- 🔴 Error details
+- Detailed stack traces for debugging
+
+## Best Practices
+
+1. **Error Handling**
+   - Always check the success status of responses
+   - Handle API errors gracefully
+   - Implement proper fallbacks
+
+2. **Data Processing**
+   - Cache frequently accessed data
+   - Implement retry mechanisms for failed requests
+   - Format data for readability
+
+3. **Configuration**
+   - Validate environment variables before use
+   - Use secure connection protocols
+   - Keep API endpoints up to date
+
+## Examples
+
+### Basic Usage
 ```typescript
-const response = await runtime.processAction('GET_INSIGHTS');
-console.log('Platform insights:', response);
+// Example of handling sales data
+callback({
+    text: `Here are the latest sales figures:
+
+    🏷️ Product: Winter Collection
+    💰 Amount: $5000
+    📅 Date: February 8, 2024
+
+    🏷️ Product: Spring Preview
+    💰 Amount: $3500
+    📅 Date: February 8, 2024`,
+    content: salesData.data
+});
 ```
 
-## Estructura de Respuestas
+## Dependencies
 
-### Ventas
-```json
-{
-  "success": true,
-  "data": [
-    {
-      "id": "1",
-      "amount": 1500,
-      "date": "2024-02-01",
-      "product": "NFT Collection Alpha"
-    }
-  ]
-}
-```
+- @elizaos/core
+- Additional platform-specific dependencies
 
-### Insights
-```json
-{
-  "success": true,
-  "data": [
-    {
-      "id": "1",
-      "metric": "Total Revenue",
-      "value": 4650,
-      "trend": "up",
-      "percentage": 15.5
-    }
-  ]
-}
-```
+## Development
 
-## Manejo de Errores
+### Command Similes
+The plugin recognizes various command formats:
+- "fetch sales information"
+- "get sales data"
+- "retrieve sales metrics"
 
-El plugin incluye manejo de errores para casos comunes:
+### State Management
+- Implements proper state initialization
+- Handles state updates
+- Maintains context across requests
 
-- Configuración faltante
-- Errores de red
-- Respuestas de error de la API
-
-Las respuestas de error seguirán este formato:
-
-```json
-{
-  "success": false,
-  "error": "Mensaje descriptivo del error"
-}
-```
-
-## Desarrollo
-
-Para construir el plugin:
-
-```bash
-pnpm build
-```
-
-Para ejecutar las pruebas:
-
-```bash
-pnpm test
-```
-
-## Licencia
+## License
 
 MIT

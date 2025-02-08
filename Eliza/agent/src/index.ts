@@ -21,14 +21,15 @@ import { OmniflixPlugin } from "@elizaos/plugin-omniflix";
 import { JeeterClientInterface } from "@elizaos/client-simsai";
 import { XmtpClientInterface } from "@elizaos/client-xmtp";
 import { DirectClient } from "@elizaos/client-direct";
-import { infinityAgentKitPlugin } from "@elizaos/plugin-infinity-agentkit";
 import { gelatoPlugin } from "@elizaos/plugin-gelato";
 import { PrimusAdapter } from "@elizaos/plugin-primus";
 import { lightningPlugin } from "@elizaos/plugin-lightning";
 import { elizaCodeinPlugin, onchainJson } from "@elizaos/plugin-iq6900";
 import { dcapPlugin } from "@elizaos/plugin-dcap";
 import { salesPlugin } from "@elizaos/plugin-sales";
+import { infinityAgentKitPlugin } from "@elizaos/plugin-infinity-agentkit";
 import { insightsPlugin } from "@elizaos/plugin-insights";
+import { infinityPrivyNillionPlugin } from "@elizaos/plugin-infinity-privy-nillion";
 
 import {
     AgentRuntime,
@@ -1021,6 +1022,7 @@ export async function createAgent(
             salesPlugin,
             insightsPlugin,
             infinityPlugin,
+            infinityPrivyNillionPlugin,
             getSecret(character, "CDP_API_KEY_NAME") &&
             getSecret(character, "CDP_API_KEY_PRIVATE_KEY") &&
             getSecret(character, "CDP_AGENT_KIT_NETWORK")

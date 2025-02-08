@@ -77,7 +77,7 @@ Social wallet creation and product sales management plugin
   - 👥 Business and customer wallet support
   - 🔒 Encrypted wallet data management
   - 🌐 Base Sepolia network integration
-  - 💰 Product sales management
+  - � Product sales management
   - 🏷️ Implicit wallet handling
 - **Main Actions**:
   - `createSocialWallet`: Creates wallets using social login

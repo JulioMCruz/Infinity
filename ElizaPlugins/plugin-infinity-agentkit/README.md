@@ -1,122 +1,115 @@
-# @elizaos/plugin-agentkit
+# @elizaos/plugin-infinity-agentkit
 
-AgentKit plugin for Eliza that enables interaction with CDP AgentKit tools for NFT and token management.
+A plugin for creating and managing business rewards using the Coinbase Developer Platform (CDP).
 
-## Setup
+## Features
 
-1. Install dependencies:
+- Create business reward tokens with simplified management
+- Automated validation of reward parameters
+- Integration with CDP Toolkit
+- Smart reward naming conventions
+- Built-in best practices for business rewards
+
+## Installation
 
 ```bash
-pnpm install
+npm install @elizaos/plugin-infinity-agentkit
 ```
 
-2. Configure environment variables:
+## Key Concepts
 
-```env
-CDP_API_KEY_NAME=your_key_name
-CDP_API_KEY_PRIVATE_KEY=your_private_key
-CDP_AGENT_KIT_NETWORK=base-sepolia # Optional: Defaults to base-sepolia
+### Reward Token Parameters
+- **Name**: Maximum 8 characters, alphanumeric (e.g., "LOYAL24")
+- **Symbol**: 3-4 characters (e.g., "LOY")
+- **Decimals**: Default 18 for standard compatibility
+- **Supply**: Configurable maximum supply
+- **Metadata**: Customizable base URI for reward metadata
+
+## Actions
+
+### CREATE_REWARD
+Creates a new business reward token with the following features:
+- Automated validation of reward names (8 char limit)
+- Business-friendly token creation
+- Simplified management parameters
+- Standard ERC20 compatibility
+
+Example usage:
+```typescript
+// Example: Creating a loyalty reward
+const rewardConfig = {
+    name: "LOYAL24",    // 8 characters max
+    symbol: "LOY",      // 3-4 characters
+    maxTokens: "1000",  // Limited supply for better management
+    decimals: 18,       // Standard compatibility
+    baseURI: "https://rewards.business.com/metadata/"
+};
 ```
 
-3. Add the plugin to your character configuration:
+## Integration with CDP
 
-```json
+The plugin integrates with Coinbase Developer Platform through:
+- CDP Toolkit for reward management
+- Tool-based reward deployment
+- Standardized parameter generation
+- Response handling and formatting
+
+## Best Practices
+
+1. **Reward Naming**
+   - Keep names under 8 characters
+   - Use year indicators (e.g., RWRD2024 → RWRD24)
+   - Choose clear, business-relevant symbols
+
+2. **Supply Management**
+   - Set conservative initial supplies
+   - Consider future scaling needs
+   - Plan for reward distribution patterns
+
+3. **Metadata Handling**
+   - Use consistent URI structures
+   - Include reward descriptions
+   - Maintain metadata availability
+
+## Error Handling
+
+The plugin includes comprehensive error handling:
+- Validation of reward parameters
+- Clear error messages
+- Transaction failure recovery
+- State management protection
+
+## Examples
+
+### Creating a Customer Loyalty Reward
+```typescript
+// Example: Customer loyalty reward
 {
-    "plugins": ["@elizaos/plugin-agentkit"],
-    "settings": {
-        "secrets": {
-            "CDP_API_KEY_NAME": "your_key_name",
-            "CDP_API_KEY_PRIVATE_KEY": "your_private_key"
-        }
-    }
+    name: "LOYAL24",
+    symbol: "LOY",
+    maxTokens: "1000",
+    decimals: 18,
+    baseURI: "https://rewards.business.com/loyalty/"
 }
 ```
 
-## Available Tools
-
-The plugin provides access to the following CDP AgentKit tools:
-
--   `GET_WALLET_DETAILS`: Get wallet information
--   `DEPLOY_NFT`: Deploy a new NFT collection
--   `DEPLOY_TOKEN`: Deploy a new token
--   `GET_BALANCE`: Check token or NFT balance
--   `MINT_NFT`: Mint NFTs from a collection
--   `REGISTER_BASENAME`: Register a basename for NFTs
--   `REQUEST_FAUCET_FUNDS`: Request testnet funds
--   `TRADE`: Execute trades
--   `TRANSFER`: Transfer tokens or NFTs
--   `WOW_BUY_TOKEN`: Buy WOW tokens
--   `WOW_SELL_TOKEN`: Sell WOW tokens
--   `WOW_CREATE_TOKEN`: Create new WOW tokens
-
-## Usage Examples
-
-1. Get wallet details:
-
-```
-Can you show me my wallet details?
-```
-
-2. Deploy an NFT collection:
-
-```
-Deploy a new NFT collection called "Music NFTs" with symbol "MUSIC"
-```
-
-3. Create a token:
-
-```
-Create a new WOW token called "Artist Token" with symbol "ART"
-```
-
-4. Check balance:
-
-```
-What's my current balance?
-```
-
-## Development
-
-1. Build the plugin:
-
-```bash
-pnpm build
-```
-
-2. Run in development mode:
-
-```bash
-pnpm dev
+### Creating a Certification Badge
+```typescript
+// Example: Certification badge
+{
+    name: "BADGE24",
+    symbol: "BDG",
+    maxTokens: "500",
+    decimals: 18,
+    baseURI: "https://rewards.business.com/certifications/"
+}
 ```
 
 ## Dependencies
 
--   @elizaos/core
--   @coinbase/cdp-agentkit-core
--   @coinbase/cdp-langchain
--   @langchain/core
-
-## Network Support
-
-The plugin supports the following networks:
-
--   Base Sepolia (default)
--   Base Mainnet
-
-Configure the network using the `CDP_AGENT_KIT_NETWORK` environment variable.
-
-## Troubleshooting
-
-1. If tools are not being triggered:
-
-    - Verify CDP API key configuration
-    - Check network settings
-    - Ensure character configuration includes the plugin
-
-2. Common errors:
-    - "Cannot find package": Make sure dependencies are installed
-    - "API key not found": Check environment variables
-    - "Network error": Verify network configuration
+- @elizaos/core
+- @coinbase/cdp-langchain
+- Additional CDP toolkit dependencies
 
 ## License
 

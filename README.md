@@ -13,6 +13,8 @@
 
 Infinity is an AI-powered loyalty system that revolutionizes how small businesses create and manage promotional campaigns. Through a simple chat interface, business owners can launch, manage, and track promotional offers using blockchain technology and AI.
 
+
+
 ### 🎯 Key Features
 - 💬 Chat-based campaign creation
 - 🎫 Automated NFT reward distribution

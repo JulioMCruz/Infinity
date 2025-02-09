@@ -32,6 +32,12 @@ Core plugin for Infinity platform integration
   - `CREATE_PROMOTION`: Creates new promotional campaigns
 - **Providers**:
   - Wallet provider for blockchain interactions
+- **User Commands**:
+  ```text
+  "Create a new summer promotion for 1000 tokens"
+  "Set up a promotional campaign for 30 days"
+  "Launch a new token promotion called Summer Sale 2025"
+  ```
 
 ### plugin-infinity-agentkit
 Reward management plugin
@@ -47,6 +53,12 @@ Reward management plugin
 - **Main Actions**:
   - `CREATE_REWARD`: Creates and distributes rewards
 - **Testing**: Includes Vitest configuration for testing
+- **User Commands**:
+  ```text
+  "Create a new loyalty reward called LOYAL24"
+  "Set up a certification badge reward"
+  "Create a reward token for customer loyalty program"
+  ```
 
 ### plugin-insights
 Analytics and insights plugin
@@ -62,6 +74,14 @@ Analytics and insights plugin
 - **Main Actions**:
   - `GET_INSIGHTS`: Retrieves analytical insights
 - **Services**: Custom analytics services
+- **User Commands**:
+  ```text
+  "Show me the latest platform insights"
+  "Get performance metrics"
+  "What are the current platform trends?"
+  "Show analytics report"
+  "Get insights data"
+  ```
 
 ### plugin-sales
 Sales management plugin
@@ -77,6 +97,14 @@ Sales management plugin
 - **Main Actions**:
   - `GET_SALES`: Retrieves sales data
 - **Services**: Sales-specific services
+- **User Commands**:
+  ```text
+  "Show me the latest sales figures"
+  "Get sales data for today"
+  "What are our current sales numbers?"
+  "Show sales report"
+  "Get sales information"
+  ```
 
 ### plugin-infinity-privy-nillion
 Social wallet creation and product sales management plugin
@@ -105,3 +133,9 @@ Social wallet creation and product sales management plugin
   - Protected wallet operations
   - Transaction tracking
   - State management and data processing
+- **User Commands**:
+  ```text
+  "Create a new wallet for my Downtown food truck location at 123 Main Street"
+  "Set up a point of sale wallet for my Beachside food truck at Ocean Drive"
+  "Add a new location wallet for my food truck at Central Park"
+  "Create a POS wallet for my Airport Terminal kiosk"

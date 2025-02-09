@@ -152,7 +152,7 @@ If you want to set up all platforms at once:
 git clone <repository-url>
 cd Infinity
 
-# Install all dependencies
+# Install all dependencies 
 cd Infinity && npm install
 cd ../DataService && yarn install
 cd ../Eliza && pnpm install --no-frozen-lockfile && pnpm build && pnpm start:debug --character="charactersProd/infinity.character.json"    
@@ -182,7 +182,7 @@ cd Infinity && npm run dev
 
 #### DataService
 - **Connection Error**
-  - Check if port 4000 is available
+  - Check if port 9000 is available
   - Verify environment variables
   - Check database connectivity
 

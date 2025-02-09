@@ -35,9 +35,6 @@ export function ProfileForm() {
     let mounted = true;
 
     const checkUserExists = async () => {
-      // Don't check if already checked and not a new user
-      if (!isCheckingUser && !isNewUser) return;
-
       try {
         if (mounted) setIsCheckingUser(true);
         const wallet = user?.wallet?.address || '';
@@ -64,12 +61,8 @@ export function ProfileForm() {
             body: JSON.stringify({ wallet: wallet }),
           });
           const profileData = await profileResponse.json();
-
-          console.log('🚀 ~ checkUserExists ~ profileData:')
           
           if (!mounted) return;
-
-          console.log('🚀 ~ checkUserExists ~ profileData:', profileData)
 
           // Load profile data into state
           setFormData({
@@ -81,8 +74,6 @@ export function ProfileForm() {
           });
           setLogo(profileData.profile.logo || null);
           setBanner(profileData.profile.banner || null);
-
-
         } else {
           setIsNewUser(true);
         }
@@ -114,7 +105,7 @@ export function ProfileForm() {
     return () => {
       mounted = false;
     };
-  }, [user?.wallet?.address, toast, isCheckingUser, isNewUser]);
+  }, [user?.wallet?.address, toast]);
   
 
   const validateFileSize = (file: File) => {

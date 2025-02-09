@@ -98,12 +98,12 @@ graph LR
    - Service Layer
    - Data Management
 
-4. [AI Characters](ElizaCharacters/README.md)
+4. [AI Characters](docs/INFINITY_CHARACTERS.md)
    - Character Definitions
    - Interaction Models
    - Response Templates
 
-5. [Eliza Plugins](ElizaPlugins/README.md)
+5. [Eliza Plugins](docs/INFINITY_PLUGINS.md)
    - Plugin Architecture
    - Integration Points
    - Custom Actions

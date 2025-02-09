@@ -14,7 +14,8 @@
   "scripts": {
     "clean": "rimraf ./dist",
     "build": "rimraf ./dist && tsc",
-    "start": "npm run build && node dist/main.js",
+    "start2": "npm run build && node dist/main.js",
+    "start": "cross-env NODE_ENV=local tsnd --respawn --ignore node_modules --transpile-only --project tsconfig.json -r tsconfig-paths/register ./src/main.ts",
     "local": "cross-env NODE_ENV=local tsnd --respawn --ignore node_modules --transpile-only --project tsconfig.json -r tsconfig-paths/register ./src/main.ts",
     "deps:check": "npx npm-check-updates",
     "lint": "eslint ./src",

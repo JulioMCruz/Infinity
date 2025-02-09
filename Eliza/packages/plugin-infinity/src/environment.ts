@@ -6,13 +6,8 @@ import * as viemChains from "viem/chains";
 export const validateInfinityConfig = async (
     runtime: IAgentRuntime
 ): Promise<InfinityConfig> => {
-    const infinityPromotionContractAddress =  runtime.getSetting("INFINITY_PROMOTION_CONTRACT_ADDRESS");
     const infinityPromotionFactoryContractAddress =  runtime.getSetting("INFINITY_PROMOTION_FACTORY_CONTRACT_ADDRESS");
     const chainName =  runtime.getSetting("EVM_CHAIN_NAME");
-    if (!infinityPromotionContractAddress || typeof infinityPromotionContractAddress !== "string") {
-        elizaLogger.debug("❌ InfinityPlugin INFINITY_PROMOTION_CONTRACT_ADDRESS not configured", infinityPromotionContractAddress);
-        throw new Error("InfinityPlugin INFINITY_PROMOTION_CONTRACT_ADDRESS not configured");
-    }
     if (!infinityPromotionFactoryContractAddress || typeof infinityPromotionFactoryContractAddress !== "string") {
         elizaLogger.debug("❌ InfinityPlugin INFINITY_PROMOTION_FACTORY_CONTRACT_ADDRESS not configured", infinityPromotionFactoryContractAddress);
         throw new Error("InfinityPlugin INFINITY_PROMOTION_FACTORY_CONTRACT_ADDRESS not configured");
@@ -27,5 +22,5 @@ export const validateInfinityConfig = async (
         throw new Error("InfinityPlugin EVM_CHAIN_NAME not supported");
     }
 
-    return { infinityPromotionContractAddress, infinityPromotionFactoryContractAddress, chainName };
+    return { infinityPromotionFactoryContractAddress, chainName };
 };

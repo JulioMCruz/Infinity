@@ -66,17 +66,6 @@ export const validatePrivyNillionConfig = async (
         throw new Error("PrivyNillionPlugin NILLION_SALE_SCHEMA_ID not configured");
     }
 
-    // Validate chain configuration
-    // if (!chainName || typeof chainName !== "string") {
-    //     elizaLogger.error("❌ PrivyNillionPlugin EVM_CHAIN_NAME not configured", chainName);
-    //     throw new Error("PrivyNillionPlugin EVM_CHAIN_NAME not configured");
-    // }
-
-    // if (!viemChains[chainName]) {
-    //     elizaLogger.error("❌ PrivyNillionPlugin EVM_CHAIN_NAME not supported", chainName);
-    //     throw new Error("PrivyNillionPlugin EVM_CHAIN_NAME not supported");
-    // }
-
     elizaLogger.info("✅ PrivyNillionPlugin configuration validated successfully");
     elizaLogger.debug("Chain configured:", chainName);
 

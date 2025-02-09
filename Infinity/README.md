@@ -113,8 +113,8 @@ npm -v   # >= 9
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/your-org/infinity-dashboard.git
-cd infinity-dashboard
+git clone https://github.com/JulioMCruz/Infinity.git
+cd Infinity/Infinity
 ```
 
 2. **Install dependencies**
@@ -167,14 +167,30 @@ npm run lint         # Run ESLint
 
 ### Environment Variables
 ```env
-# App Configuration
-NEXT_PUBLIC_APP_URL=http://localhost:3000
+# Server Configuration
+SERVER_ENDPOINT=your-server-endpoint
 
 # Authentication
 NEXT_PUBLIC_PRIVY_APP_ID=your-privy-app-id
+NEXT_PUBLIC_PRIVY_CLIENT_ID=your-privy-client-id
 
-# API Configuration
-NEXT_PUBLIC_API_URL=your-api-url
+# Nillion Secret Vault Configuration
+NEXT_PUBLIC_NILLION_ORG_SK=your-nillion-org-sk
+NEXT_PUBLIC_NILLION_ORG_DID=your-nillion-org-did
+
+# Nillion Node Configuration
+NEXT_PUBLIC_NILLION_NODE1_URL=your-node1-url
+NEXT_PUBLIC_NILLION_NODE1_DID=your-node1-did
+
+NEXT_PUBLIC_NILLION_NODE2_URL=your-node2-url
+NEXT_PUBLIC_NILLION_NODE2_DID=your-node2-did
+
+NEXT_PUBLIC_NILLION_NODE3_URL=your-node3-url
+NEXT_PUBLIC_NILLION_NODE3_DID=your-node3-did
+
+# Nillion Schema Configuration
+NEXT_PUBLIC_NILLION_USER_PROFILE_SCHEMA_ID=your-user-profile-schema-id
+NEXT_PUBLIC_NILLION_USER_SECRETS_SCHEMA_ID=your-user-secrets-schema-id
 ```
 
 ## 🤝 Contributing

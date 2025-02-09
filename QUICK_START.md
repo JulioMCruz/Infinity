@@ -188,13 +188,13 @@ If you want to set up all platforms at once:
 
 ```bash
 # Clone repository
-git clone [<repository-url>](https://github.com/JulioMCruz/Infinity)
+git clone https://github.com/JulioMCruz/Infinity
 cd Infinity
 
 # Install all dependencies 
 cd Infinity && npm install
 cd ../DataService && yarn install
-cd ../Eliza && pnpm install --no-frozen-lockfile && pnpm build && pnpm start:debug --character="charactersProd/infinity.character.json"    
+cd ../Eliza && pnpm install --no-frozen-lockfile && pnpm build && pnpm start:debug --character="charactersProd/infinity-main.character.json"    
 
 # Start all services (in separate terminals)
 # Terminal 1 - DataService

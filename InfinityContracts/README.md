@@ -1,5 +1,5 @@
 <div align="center">
-<img src="packages/nextjs/public/logo.svg" alt="Infinity Contracts Logo" width="200"/>
+<img src="../public/logo.png" alt="Infinity" width="200"/>
 
 # Infinity Contracts
 

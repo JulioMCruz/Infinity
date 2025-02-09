@@ -8,7 +8,7 @@ interface Agent {
 }
 
 interface AgentListProps {
-  onSelectAgent: (agentId: string) => void
+  onSelectAgent: (agent: Agent) => void
 }
 
 export function AgentList({ onSelectAgent }: AgentListProps) {
@@ -50,7 +50,7 @@ export function AgentList({ onSelectAgent }: AgentListProps) {
       {agents.map((agent) => (
         <button
           key={agent.id}
-          onClick={() => onSelectAgent(agent.id)}
+          onClick={() => onSelectAgent(agent)}
           className="flex items-center gap-3 p-4 bg-[#513593] rounded-lg hover:bg-[#9c72fe] transition-colors"
         >
           <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#9c72fe]">

@@ -4,13 +4,15 @@ import https from 'https'
 
 export async function GET() {
   try {
-    const agent = new https.Agent({
-      rejectUnauthorized: false
-    })
+    // const agent = new https.Agent({
+    //   rejectUnauthorized: false
+    // })
+
+    console.log("*******************************");
+    console.log("*** calling SERVER_ENDPOINT ***");
+    console.log(`${process.env.SERVER_ENDPOINT}/agents`);
     
-    const response = await nodeFetch(`${process.env.SERVER_ENDPOINT}/agents`, {
-      agent
-    })
+    const response = await nodeFetch(`${process.env.SERVER_ENDPOINT}/agents`)
     
     if (!response.ok) throw new Error('Failed to fetch agents')
     const data = await response.json()

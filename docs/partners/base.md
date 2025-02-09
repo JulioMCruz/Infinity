@@ -35,13 +35,12 @@ EVM_CHAIN_NAME=baseSepolia
 
 ### RUN ELIZA SERVER
 ```
-#terminal 1 server
 cd Eliza
 pnpm install --no-frozen-lockfile
 pnpm build
-pnpm start:debug --character="charactersProd/infinity.character.json" 
-
-#terminal 2 client
+pnpm start:debug --character="characters/infinity.character.json" 
+```
+### RUN ELIZA CLIENT FOR TEST
+```
 pnpm start:client
-
 ```

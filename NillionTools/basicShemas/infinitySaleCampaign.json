@@ -1,0 +1,25 @@
+{
+    "schemaName": "Infinity Sale Campaign",
+    "fields": [
+      {
+        "field": "userwallet",
+        "isSecrect": false,
+        "type": "string"
+      },
+      {
+        "field": "name",
+        "isSecrect": false,
+        "type": "string"
+      },
+      {
+        "field": "privywalletaddress",
+        "isSecrect": true,
+        "type": "string"
+      },
+      {
+        "field": "usdprice",
+        "isSecrect": true,
+        "type": "string"
+      }
+    ]
+  }

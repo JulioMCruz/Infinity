@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Infinity Busines Profile",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "_id": {
+        "type": "string",
+        "format": "uuid",
+        "coerce": true
+      },
+      "userwallet": {
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      },
+      "industry": {
+        "type": "string"
+      },
+      "description": {
+        "type": "string"
+      },
+      "wallet": {
+        "type": "object",
+        "properties": {
+          "$share": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "$share"
+        ]
+      },
+      "token": {
+        "type": "object",
+        "properties": {
+          "$share": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "$share"
+        ]
+      }
+    },
+    "required": [
+      "_id",
+      "userwallet",
+      "name",
+      "description",
+      "wallet",
+      "token"
+    ]
+  }
+}

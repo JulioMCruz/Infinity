@@ -1,0 +1,19 @@
+{
+  "name": "sv-example",
+  "version": "1.0.0",
+  "description": "Example using the nillion-sv-wrappers package to read and write data to a Nillion Secret Vault Collection",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Steph",
+  "license": "MIT",
+  "dependencies": {
+    "@nillion/nilql": "^0.0.0-alpha.10",
+    "buffer": "^6.0.3",
+    "did-jwt": "^8.0.8",
+    "nillion-sv-wrappers": "^1.0.7",
+    "uuid": "^11.0.5"
+  },
+  "type": "module"
+}

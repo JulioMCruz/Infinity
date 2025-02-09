@@ -1,0 +1,45 @@
+{
+    "schemaName": "Infinity Busines Profile",
+    "fields": [
+      {
+        "field": "userwallet",
+        "isSecrect": false,
+        "type": "string"
+      },
+      {
+        "field": "name",
+        "isSecrect": true,
+        "type": "string"
+      },
+      {
+        "field": "industry",
+        "isSecrect": true,
+        "type": "string"
+      },
+      {
+        "field": "description",
+        "isSecrect": true,
+        "type": "string"
+      },
+      {
+        "field": "merchantwalletaddress",
+        "isSecrect": true,
+        "type": "string"
+      },
+      {
+        "field": "tokenname",
+        "isSecrect": true,
+        "type": "string"
+      },
+      {
+        "field": "logo",
+        "isSecrect": false,
+        "type": "string"
+      },
+      {
+        "field": "banner",
+        "isSecrect": false,
+        "type": "string"
+      }
+    ]
+  }

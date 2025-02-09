@@ -77,8 +77,12 @@ cd infinity
 2. Install dependencies for each component
 ```bash
 # Frontend
-cd InfinityApp
-yarn install
+cd Infinity
+npm install --legacy-peer-deps && npm run build && npm run dev
+
+# Backend - Eliza
+cd Infinity
+npm install --legacy-peer-deps && npm run build && npm run dev
 
 # Smart Contracts
 cd ../InfinityContracts
@@ -98,7 +102,7 @@ cp .env.example .env
 4. Start development servers
 ```bash
 # Frontend
-cd InfinityApp
+cd Infinit
 yarn dev
 
 # Backend

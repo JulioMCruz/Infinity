@@ -1,5 +1,5 @@
 {
-  "name": "Infinity-H",
+  "name": "Reward Manager  (AgentKit)",
   "clients": ["direct"],
   "modelProvider": "anthropic",
   "settings": {

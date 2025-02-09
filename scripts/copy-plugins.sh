@@ -10,6 +10,7 @@ PLUGINS=(
     "plugin-infinity-agentkit"
     "plugin-sales"
     "plugin-insights"
+    "plugin-infinity-privy-nillion"
 )
 
 # Create destination directory if it doesn't exist

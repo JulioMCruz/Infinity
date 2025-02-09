@@ -63,7 +63,7 @@ pnpm start:client
 #### Single Character
 ```bash
 cd Eliza
-npx eliza start characters/sales.character.json
+pnpm start:debug characters/sales.character.json
 ```
 
 #### Multiple Characters (Different Terminals)

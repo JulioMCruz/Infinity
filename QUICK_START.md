@@ -16,6 +16,7 @@ This guide will help you set up and run the Infinity system locally.
 - Accounts required:
   - Privy (social authentication)
   - Nillion (secure data storage)
+  - Coinbase Developer Plattform (agentkit)
   - Base Sepolia Network (smart contracts)
 
 ## Quick Setup
@@ -130,7 +131,7 @@ cd Infinity && npm run dev
 ### 5. Access the System
 
 - Frontend: http://localhost:3000
-- DataService: http://localhost:4000
+- DataService: http://localhost:9000
 - Eliza: http://localhost:3000
 
 ## Troubleshooting

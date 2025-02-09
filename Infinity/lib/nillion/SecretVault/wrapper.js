@@ -74,6 +74,7 @@ export class SecretVaultWrapper {
     console.log(" *************** generate JWT ***************")
     console.log("payload ***: ", JSON.stringify(payload));
     console.log("signer ***: ", JSON.stringify(signer));
+    console.log("credentials ***: ", JSON.stringify(this.credentials));
 
     const jwtToken = await createJWT(payload, {
       issuer: this.credentials.orgDid,
@@ -81,7 +82,7 @@ export class SecretVaultWrapper {
     });
 
     console.log("jwtToken ***: ", jwtToken);
-    
+
     console.log(" *************** generate JWT ***************")
 
     return jwtToken
@@ -110,8 +111,8 @@ export class SecretVaultWrapper {
    * @returns {Promise<object>} Response data
    */
   async makeRequest(nodeUrl, endpoint, token, payload, method = 'POST') {
-    console.log("*** making request to ***: ", nodeUrl);
-    console.log(" With token ***: ", JSON.stringify(token));
+    // console.log("*** making request to ***: ", nodeUrl);
+    // console.log(" With token ***: ", JSON.stringify(token));
 
     try {
       const response = await fetch(`${nodeUrl}/api/v1/${endpoint}`, {
@@ -317,7 +318,7 @@ export class SecretVaultWrapper {
       try {
         const jwt = await this.generateNodeToken(node.did);
 
-        console.log("JWT ***: ", JSON.stringify(jwt));
+        // console.log("JWT ***: ", JSON.stringify(jwt));
 
         const payload = { schema: this.schemaId, filter };
         const result = await this.makeRequest(

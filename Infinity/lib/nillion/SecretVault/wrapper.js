@@ -99,6 +99,9 @@ export class SecretVaultWrapper {
    * @returns {Promise<object>} Response data
    */
   async makeRequest(nodeUrl, endpoint, token, payload, method = 'POST') {
+
+    console.log("*** making request to ***", nodeUrl);
+
     const response = await fetch(`${nodeUrl}/api/v1/${endpoint}`, {
       method,
       headers: {
@@ -111,6 +114,8 @@ export class SecretVaultWrapper {
         rejectUnauthorized: false
       })
     });
+
+    console.log("*** response ***", response);
 
     if (!response.ok) {
       const text = await response.text();

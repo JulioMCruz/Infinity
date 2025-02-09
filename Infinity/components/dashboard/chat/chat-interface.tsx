@@ -38,7 +38,7 @@ export function ChatInterface({ agentId }: { agentId: string }) {
   const sendMessage = async (message: string) => {
     try {
       const response = await fetch(
-        `${NEXT_PUBLIC_SERVER_ENDPOINT}/${agentId}/message`,
+        `/api/agents/${agentId}/message`,
         {
           method: "POST",
           headers: {

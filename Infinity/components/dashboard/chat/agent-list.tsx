@@ -18,7 +18,7 @@ export function AgentList({ onSelectAgent }: AgentListProps) {
 
   const fetchAgents = async () => {
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_ENDPOINT}/agents`)
+      const response = await fetch('/api/agents')
       if (!response.ok) throw new Error('Failed to fetch agents')
       const data = await response.json()
       setAgents(data.agents)
@@ -32,15 +32,10 @@ export function AgentList({ onSelectAgent }: AgentListProps) {
   }
 
   useEffect(() => {
-    // Initial fetch
     fetchAgents()
-
-    // Set up interval for periodic refresh
-    const intervalId = setInterval(fetchAgents, 10000) // 10 seconds
-
-    // Cleanup interval on component unmount
+    const intervalId = setInterval(fetchAgents, 10000)
     return () => clearInterval(intervalId)
-  }, []) // Empty dependency array means this effect runs once on mount
+  }, [])
 
   if (isLoading && agents.length === 0) {
     return <div className="text-center p-4">Loading agents...</div>

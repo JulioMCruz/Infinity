@@ -74,7 +74,7 @@ export class SecretVaultWrapper {
     console.log(" *************** generate JWT ***************")
     console.log("payload ***: ", JSON.stringify(payload));
     console.log("signer ***: ", JSON.stringify(signer));
-    console.log("credentials ***: ", JSON.stringify(this.credentials));
+    console.log("credentials ***: ", JSON.stringify(this.credentials.orgDid));
 
     const jwtToken = await createJWT(payload, {
       issuer: this.credentials.orgDid,
@@ -83,7 +83,7 @@ export class SecretVaultWrapper {
 
     console.log("jwtToken ***: ", jwtToken);
 
-    console.log(" *************** generate JWT ***************")
+    console.log(" *****************************")
 
     return jwtToken
   }

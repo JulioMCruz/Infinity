@@ -1,0 +1,35 @@
+{
+    "schemaName": "Infinity Busines Profile",
+    "fields": [
+      {
+        "field": "userwallet",
+        "isSecrect": false,
+        "type": "string"
+      },
+      {
+        "field": "name",
+        "isSecrect": false,
+        "type": "string"
+      },
+      {
+        "field": "industry",
+        "isSecrect": false,
+        "type": "string"
+      },
+      {
+        "field": "description",
+        "isSecrect": false,
+        "type": "string"
+      },
+      {
+        "field": "wallet",
+        "isSecrect": true,
+        "type": "string"
+      },
+      {
+        "field": "token",
+        "isSecrect": true,
+        "type": "string"
+      }
+    ]
+  }

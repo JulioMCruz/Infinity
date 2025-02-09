@@ -1,5 +1,5 @@
 {
-  "name": "Agent Kit",
+  "name": "Reward Manager  (AgentKit)",
   "clients": ["direct"],
   "modelProvider": "anthropic",
   "settings": {

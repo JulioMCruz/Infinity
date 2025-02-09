@@ -48,85 +48,59 @@ EVM_CHAIN_NAME=base-sepolia
 
 ## Actions
 
-### CREATE_SOCIAL_WALLET
-Creates a new wallet using social login via Privy with the following features:
+### CREATE_POS_WALLET
+Creates a new point of sale wallet for a food business location:
 
 - **Functionality**:
-  - Social login integration (Google, Twitter, etc.)
-  - User type specification (business/customer)
-  - Chain preference configuration
-  - Secure wallet creation
+  - Creates dedicated wallets for food business locations
+  - Supports multiple location types (food truck, restaurant, kiosk)
+  - Secures wallet keys with Nillion
+  - Stores location metadata securely
+  - Chain-specific wallet creation (Base Sepolia)
+
+- **Location Types**:
+  - food_truck (default)
+  - restaurant
+  - kiosk
 
 - **Output Format**:
   ```typescript
   {
+    walletId: string;     // Privy wallet ID
     address: string;      // Wallet address
-    userType: string;     // "business" or "customer"
+    location: {
+      name: string;       // Location name
+      type: string;       // Location type
+      address: string;    // Physical address
+    };
     chain: {
       name: string;       // Chain name
-      id: number;        // Chain ID
+      id: number;         // Chain ID (84532 for Base Sepolia)
     };
-    socialMethod: string; // Authentication method used
+    timestamp: string;    // Creation timestamp
   }
   ```
 
 - **Example Response**:
   ```text
-  Successfully created wallet using google login
-  Address: 0x1234...5678
-  User Type: business
-  Chain: base-sepolia
-  ```
-
-### CREATE_PRODUCT_SALE
-Creates a new food truck product sale with implicit wallet understanding:
-
-- **Functionality**:
-  - Food truck menu item creation 🚚
-  - Automatic wallet association
-  - Price management
-  - Transaction timestamping
-  - Last message processing only
-
-- **Key Features**:
-  - Processes only the most recent message in the conversation
-  - Ignores previous context for accurate order processing
-  - Step-by-step validation with food-specific guidance
-  - Food truck focused interface with relevant emojis
-
-- **Output Format**:
-  ```typescript
-  {
-    actionContent: string;   // Sale action description
-    promotionName: string;   // Food item name
-    amount: number;          // Sale amount
-    walletAddress: string;   // Associated wallet
-    saleId: string;         // Unique sale identifier
-    timestamp: string;       // Transaction timestamp
-  }
-  ```
-
-- **Example Response**:
-  ```text
-  ✨ Food Item Added Successfully!
-  🎯 Action: I want to sell a product
-  🍽️ Item: Gourmet Street Tacos
-  💰 Price: $12.99
-  🔐 Wallet: 0x1234...5678
-  🏷️ Sale ID: abc123
+  ✨ New Point of Sale Wallet Created!
   
-  Your food item is now ready for customers! 🚚
+  📍 Location: Downtown Food Truck
+  🏪 Type: food_truck
+  📮 Address: 123 Main St, Downtown
+  
+  🔐 Wallet Address: 0x1234...5678
+  ⛓️ Chain: base-sepolia
+  
+  Your new point of sale is ready to process transactions! 🎉
   ```
 
-## Usage
 
 ```typescript
-import { createSocialWalletAction, createItemSellAction } from '@elizaos/plugin-infinity-privy-nillion';
+import { createPoSWalletAction,  } from '@elizaos/plugin-infinity-privy-nillion';
 
 // Plugin will automatically handle:
-// - Social authentication
 // - Wallet creation
-// - Product sale management
 // - Data encryption and storage
 ```
 
@@ -168,28 +142,14 @@ Detailed logging system with different contexts:
 
 ## Examples
 
-### Social Wallet Creation
+### Point of Sale Wallet Creation
 ```typescript
-// Example of creating a social wallet
-"I want to sign up as a business using Google login"
+// Examples of creating point of sale wallets
+"Create a new wallet for my Downtown food truck location at 123 Main Street"
+"Set up a point of sale wallet for my Beachside food truck at Ocean Drive"
+"Add a new location wallet for my food truck at Central Park"
+"Create a POS wallet for my Airport Terminal kiosk"
 ```
-
-### Food Truck Product Sale Creation
-```typescript
-// Examples of creating food truck items
-"I want to sell a product called 'Gourmet Street Tacos' for $12.99"
-"Create a sale for my 'Loaded Burger Combo' for $15.99"
-"Sell my 'Signature Food Truck Bowl' for $13.99"
-```
-
-## Command Recognition
-
-The plugin recognizes various command formats:
-- "create wallet with social login"
-- "sign up using social account"
-- "sell a food item"
-- "create a sale for my menu item"
-- "add item to food truck menu"
 
 ## Development
 

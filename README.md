@@ -25,23 +25,8 @@ Infinity is an AI-powered loyalty system that revolutionizes how small businesse
 
 ## 🚀 Quick Start
 
-1. **Connect Your Wallet**
-   - Use social login for new Web3 users
-   - Or connect existing wallet
+📖 **[QUICK START](QUICK_START.md)**
 
-2. **Fund Your Account**
-   - Subscribe to Infinity AaaS
-   - Fund gas fees for operations
-
-3. **Create Campaign**
-   - Chat with AI to set parameters
-   - Automatic smart contract deployment
-   - Instant NFT creation
-
-4. **Monitor & Optimize**
-   - Track campaign performance
-   - Analyze customer engagement
-   - Adjust based on AI insights
 
 ## 💡 How It Works
 
@@ -166,8 +151,6 @@ The system provides:
 
 ## 🏆 ETHGlobal Agents Tracks
 
-[📊 View Current Status](STATUS.md)
-
 <div align="center">
 
 | [![Coinbase](https://ethglobal.b-cdn.net/organizations/rpi4f/square-logo/default.png)](TRACKS.md#coinbase-developer-platform-tracks-20000) | [![Base](https://ethglobal.b-cdn.net/organizations/h5ps8/square-logo/default.png)](TRACKS.md#base-track-10000) | [![Privy](https://ethglobal.b-cdn.net/organizations/ijybm/square-logo/default.png)](TRACKS.md#privy-track-5000) | [![The Graph](https://ethglobal.b-cdn.net/organizations/pfyco/square-logo/default.png)](TRACKS.md#the-graph-track-5000) | [![Nillion](https://ethglobal.b-cdn.net/organizations/0accc/square-logo/default.png)](TRACKS.md#nillion-track-5000) |
@@ -176,19 +159,7 @@ The system provides:
 
 </div>
 
-## 🤝 Contributing
 
-See our [Contributing Guide](CONTRIBUTING.md) for details on:
-- Code standards
-- Development workflow
-- Testing requirements
-- Documentation guidelines
-
-## 📄 License
-
-This project is licensed under the INFINITY License - see the [LICENSE](LICENSE) file for details.
-
----
 
 <div align="center">
 

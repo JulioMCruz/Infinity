@@ -21,7 +21,7 @@ This directory contains the character definitions for Infinity's AI agents. Each
 
 ## 🤖 Characters
 
-### Infinity-H
+### Infinity Main (infinity-main.character.json)
 - **Purpose**: Helps early stage founders and small businesses implement blockchain-powered customer loyalty systems
 - **Key Features**:
   - 🎯 Customer loyalty reward systems
@@ -31,7 +31,7 @@ This directory contains the character definitions for Infinity's AI agents. Each
 - **Topics**: Business, Economics, Blockchain, Web3, Marketing
 - **Style**: Friendly and business-savvy, with a focus on optimization
 
-### Loyalty Engine AI
+### Infinity (infinity.character.json)
 - **Purpose**: Automates customer loyalty programs using blockchain technology
 - **Key Features**:
   - 🏆 Points and tier-based rewards
@@ -41,7 +41,7 @@ This directory contains the character definitions for Infinity's AI agents. Each
 - **Topics**: Blockchain Architecture, Tokenomics, Data Analytics, Security
 - **Style**: Technical precision with user-friendly explanations
 
-### Sales Character
+### Sales (sales.character.json)
 - **Purpose**: Manages sales operations and customer interactions
 - **Key Features**:
   - 💼 Sales process automation
@@ -51,7 +51,7 @@ This directory contains the character definitions for Infinity's AI agents. Each
 - **Topics**: Sales, CRM, Business Development
 - **Style**: Professional and results-oriented
 
-### Agent Kit Character
+### Agent Kit (infinity-agentkit.character.json)
 - **Purpose**: Manages and automates reward distribution in the loyalty system
 - **Key Features**:
   - 🎁 Reward distribution automation
@@ -61,8 +61,18 @@ This directory contains the character definitions for Infinity's AI agents. Each
 - **Topics**: Rewards, Tokenomics, Distribution Systems, Analytics
 - **Style**: Efficient and systematic, focused on reward optimization
 
-### Social Wallet Agent
-- **Purpose**: Facilitates Web3 wallet creation and product sales management
+### Insights (insights.character.json)
+- **Purpose**: Provides analytical insights and data processing for the platform
+- **Key Features**:
+  - 📈 Data analytics and visualization
+  - 🔍 Pattern recognition
+  - 📊 Performance metrics tracking
+  - 🎯 Strategic recommendations
+- **Topics**: Data Analysis, Business Intelligence, Performance Optimization
+- **Style**: Analytical and detail-oriented, focused on actionable insights
+
+### Points of Sale Wallet (points-of-sale-wallet-privy-nillion.character.json)
+- **Purpose**: Facilitates Web3 wallet creation and product sales management for food businesses
 - **Key Features**:
   - 🔑 Social login wallet creation via Privy
   - 🛡️ Secure data storage with Nillion
@@ -71,8 +81,25 @@ This directory contains the character definitions for Infinity's AI agents. Each
   - 🌐 Base Sepolia network integration
   - 💰 Product sales management
   - 🏷️ Implicit wallet handling for sales
-- **Topics**: Web3 Wallets, Social Authentication, Blockchain Security, Data Privacy, Product Sales
-- **Style**: User-friendly and security-focused, making Web3 and product sales accessible
+  - 🏪 Multiple location type support (food truck, restaurant, kiosk)
+  - 📍 Location metadata management
+  - 🔒 Encrypted wallet key storage
+  - 📝 Comprehensive logging system
+  - ⚠️ Advanced error handling
+- **Capabilities**:
+  - Creates dedicated point of sale wallets for food businesses
+  - Manages location-specific wallet creation and configuration
+  - Handles secure data storage across multiple Nillion nodes
+  - Processes product sales with automatic wallet association
+  - Provides detailed transaction tracking and validation
+- **Security Features**:
+  - Multi-node Nillion configuration for enhanced security
+  - Organization-level security with DID verification
+  - Schema-based data validation
+  - Protected wallet operations
+  - Secure transaction handling
+- **Topics**: Web3 Wallets, Social Authentication, Blockchain Security, Data Privacy, Product Sales, Point of Sale Systems
+- **Style**: User-friendly and security-focused, making Web3 and product sales accessible for food businesses
 
 ## ⚙️ Configuration
 

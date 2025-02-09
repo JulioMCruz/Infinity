@@ -70,10 +70,21 @@ export class SecretVaultWrapper {
       aud: nodeDid,
       exp: Math.floor(Date.now() / 1000) + this.tokenExpirySeconds,
     };
-    return await createJWT(payload, {
+
+    console.log(" *************** generate JWT ***************")
+    console.log("payload ***: ", JSON.stringify(payload));
+    console.log("signer ***: ", JSON.stringify(signer));
+
+    const jwtToken = await createJWT(payload, {
       issuer: this.credentials.orgDid,
       signer,
     });
+
+    console.log("jwtToken ***: ", jwtToken);
+    
+    console.log(" *************** generate JWT ***************")
+
+    return jwtToken
   }
 
   /**
@@ -305,6 +316,9 @@ export class SecretVaultWrapper {
     for (const node of this.nodes) {
       try {
         const jwt = await this.generateNodeToken(node.did);
+
+        console.log("JWT ***: ", JSON.stringify(jwt));
+
         const payload = { schema: this.schemaId, filter };
         const result = await this.makeRequest(
           node.url,

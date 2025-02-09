@@ -1,50 +1,44 @@
-# Coinbase Developer Platform Tracks ($20,000)
+# QUICK START SETUP ELIZA
+📖 **[QUICK START](QUICK_START.md)**
 
-## Most Innovative Use of AgentKit ($7,500)
-AI-first loyalty system:
 
-- ✓ Chat agent for onchain rewards management
-- ✓ MPC Wallets for secure interactions
-- ✓ Custom API calls for NFTs
-- ✓ Base integration for smart contracts
-- ✓ Innovative user experience
+### plugin-infinity-agentkit
+Reward management plugin
 
-## Best Agent with CDP Tools ($1,500)
-CDP tools integration:
+📖 **[Plugin Details & Documentation](../ElizaPlugins/plugin-infinity-agentkit/README.md)**
 
-- ✓ Onramp for fiat-to-crypto onboarding
-- ✓ Commerce for merchant payments
-- ✓ Smart Wallets for asset management
-- ✓ OnchainKit for seamless UI/UX
+- **Purpose**: Manages reward distribution and tracking
+- **Key Features**:
+  - 🎁 Reward creation and distribution
+  - 📊 Reward tracking
+  - ⚡ Real-time processing
+  - 🔄 Automated distribution
+- **Main Actions**:
+  - `CREATE_REWARD`: Creates and distributes rewards
+- **Testing**: Includes Vitest configuration for testing
+- **User Commands**:
+  ```text
+  "Create a new loyalty reward called LOYAL24"
+  "Set up a certification badge reward"
+  "Create a reward token for customer loyalty program"
+  ```
 
-## AgentKit + OnchainKit ($1,500)
-Integrated frontend and backend:
+### SETUP for run plugin-infinity-agentkit
+```.env
+# Coinbase AgentKit
+CDP_API_KEY_NAME=
+CDP_API_KEY_PRIVATE_KEY=
+CDP_AGENT_KIT_NETWORK=base-sepolia # Optional: Defaults to base-sepolia
+```
 
-- ✓ OnchainKit React components
-- ✓ CDP SDK for blockchain operations
-- ✓ Fund and Checkout components
-- ✓ Fluid user experience
-
-## Viral Consumer App ($1,500)
-Accessible Web3 loyalty:
-
-- ✓ Complete crypto abstraction
-- ✓ Natural language interaction
-- ✓ Public demo available
-- ✓ UX for non-crypto users
-
-## AgentKit Contributions ($3,000)
-Ecosystem contributions:
-
-- ✓ Loyalty plugin for AgentKit
-- ✓ New actions for NFTs
-- ✓ Documented Issues and PRs
-- ✓ Functionality improvements
-
-## Agentic Payments ($1,500)
-Programmatic payments:
-
-- ✓ Coinbase Commerce integration
-- ✓ Fiat-to-crypto onramp
-- ✓ Instant onchain payments
-- ✓ Seamless payment experience
+### RUN ELIZA SERVER
+```
+cd Eliza
+pnpm install --no-frozen-lockfile
+pnpm build
+pnpm start:debug --character="characters/infinity-agentkit.character.json" 
+```
+### RUN ELIZA CLIENT FOR TEST
+```
+pnpm start:client
+```

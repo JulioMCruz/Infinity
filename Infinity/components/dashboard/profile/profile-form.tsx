@@ -35,8 +35,9 @@ export function ProfileForm() {
     let mounted = true;
 
     const checkUserExists = async () => {
+      if (!mounted) return;
+      
       try {
-        if (mounted) setIsCheckingUser(true);
         const wallet = user?.wallet?.address || '';
         
         const response = await fetch('/api/user/exists', {

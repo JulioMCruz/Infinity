@@ -7,9 +7,9 @@ export async function POST(
   { params }: { params: { agentId: string } }
 ) {
   try {
-    const agent = new https.Agent({
-      rejectUnauthorized: false
-    })
+    // const agent = new https.Agent({
+    //   rejectUnauthorized: false
+    // })
     
     const body = await request.json()
     const response = await nodeFetch(
@@ -20,7 +20,7 @@ export async function POST(
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(body),
-        agent
+        // agent
       }
     )
 

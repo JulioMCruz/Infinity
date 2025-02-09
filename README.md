@@ -194,7 +194,7 @@ This project is licensed under the INFINITY License - see the [LICENSE](LICENSE)
 
 ### Built with 💫 by the Infinity Team
 
-[Website](https://infinityagent.xyz/) • [Documentation](https://github.com/infinity)
+[Website](https://infinityagent.xyz/) • [Documentation]([https://github.com/infinity](https://github.com/JulioMCruz/Infinity/tree/main))
 
 </div>
 

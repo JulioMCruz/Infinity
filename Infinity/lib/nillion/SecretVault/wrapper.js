@@ -100,7 +100,7 @@ export class SecretVaultWrapper {
    */
   async makeRequest(nodeUrl, endpoint, token, payload, method = 'POST') {
     console.log("*** making request to ***: ", nodeUrl);
-    console.log(" With token ***: ", token);
+    console.log(" With token ***: ", JSON.stringify(token));
 
     try {
       const response = await fetch(`${nodeUrl}/api/v1/${endpoint}`, {

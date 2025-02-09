@@ -1,5 +1,5 @@
 {
-  "name": "Sales Analytics AI",
+  "name": "Sales Analytics AI (API)",
   "clients": ["direct"],
   "modelProvider": "anthropic",
   "settings": {

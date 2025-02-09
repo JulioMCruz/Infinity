@@ -108,11 +108,6 @@ graph LR
    - Integration Points
    - Custom Actions
 
-### Technical Guides
-- [Plugin Development](docs/plugin-infinity.md)
-- [Running Characters](docs/running-characters.md)
-- [System Analysis](docs/analisis/README.md)
-
 ## 🔄 Process Flow
 
 ### Campaign Creation

@@ -162,7 +162,7 @@ The system provides:
 
 ### Built with 💫 by the Infinity Team
 
-[Website](https://infinityagent.xyz/) • [Documentation]([https://github.com/infinity](https://github.com/JulioMCruz/Infinity/tree/main))
+[Website](https://infinityagent.xyz/) • [Github](https://github.com/JulioMCruz/Infinity/tree/main)
 
 </div>
 

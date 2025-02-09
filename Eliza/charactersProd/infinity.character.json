@@ -1,5 +1,5 @@
 {
-  "name": "Infinity - (Smart Contract)",
+  "name": "Promotion Manager (Base)",
   "clients": ["direct"],
   "modelProvider": "anthropic",
   "settings": {

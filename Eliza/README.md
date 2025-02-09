@@ -190,3 +190,4 @@ We now have a [paper](https://arxiv.org/pdf/2501.06781) you can cite for the Eli
 ## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=elizaos/eliza&type=Date)](https://star-history.com/#elizaos/eliza&Date)
+

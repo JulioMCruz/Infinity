@@ -4,10 +4,6 @@ This guide will help you set up and run the Infinity system locally.
 
 ## Prerequisites
 
-- Node.js:
-  - Infinity: Node.js 18+
-  - DataService: Node.js >=22.10.0
-  - Eliza: Node.js 23.3.0
 - Git
 - Package Managers:
   - npm (comes with Node.js)
@@ -16,56 +12,38 @@ This guide will help you set up and run the Infinity system locally.
 - Accounts required:
   - Privy (social authentication)
   - Nillion (secure data storage)
-  - Coinbase Developer Plattform (agentkit)
+  - Coinbase Developer Platform (agentkit)
   - Base Sepolia Network (smart contracts)
 
-## Quick Setup
-
-### 1. Node.js Version Management
+## Node.js Version Management
 
 We recommend using `nvm` (Node Version Manager) to manage different Node.js versions:
 
 ```bash
 # Install nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+```
 
-# Install and use required Node.js versions
-# For Infinity
+## Platform Setup
+
+### 1. Infinity (Frontend)
+
+#### Requirements
+- Node.js 18+
+```bash
 nvm install 18
-# For DataService
-nvm install 22.10.0
-# For Eliza
-nvm install 23.3.0
-```
-
-Use the appropriate version when working with each component:
-```bash
-# When working with Infinity
 nvm use 18
-# When working with DataService
-nvm use 22.10.0
-# When working with Eliza
-nvm use 23.3.0
 ```
 
-### 2. Clone & Install
-
+#### Installation
 ```bash
-# Clone repository
-git clone <repository-url>
 cd Infinity
-
-# Install dependencies for all components
-cd Infinity && npm install
-cd ../DataService && yarn install
-cd ../Eliza && pnpm install
+npm install
 ```
 
-### 3. Environment Setup
-
-#### Frontend (Infinity)
+#### Environment Setup
 ```bash
-cp Infinity/.env.example Infinity/.env
+cp .env.example .env
 ```
 
 Required variables:
@@ -85,9 +63,31 @@ NEXT_PUBLIC_NILLION_NODE3_URL=<node3-url>
 NEXT_PUBLIC_NILLION_NODE3_DID=<node3-did>
 ```
 
-#### DataService
+#### Start Service
 ```bash
-cp DataService/.env.example DataService/.env.development
+npm run dev
+```
+
+Access at: http://localhost:3000
+
+### 2. DataService
+
+#### Requirements
+- Node.js >=22.10.0
+```bash
+nvm install 22.10.0
+nvm use 22.10.0
+```
+
+#### Installation
+```bash
+cd DataService
+yarn install
+```
+
+#### Environment Setup
+```bash
+cp .env.example .env.development
 ```
 
 Required variables:
@@ -96,9 +96,32 @@ PORT=4000
 NODE_ENV=development
 ```
 
-#### Eliza
+#### Start Service
 ```bash
-cp Eliza/.env.example Eliza/.env
+yarn local
+```
+
+Access at: http://localhost:9000
+
+### 3. Eliza
+
+#### Requirements
+- Node.js 23.3.0
+```bash
+nvm install 23.3.0
+nvm use 23.3.0
+```
+
+#### Installation
+```bash
+cd Eliza
+pnpm install --no-frozen-lockfile
+pnpm build
+```
+
+#### Environment Setup
+```bash
+cp .env.example .env
 ```
 
 Required variables:
@@ -113,11 +136,28 @@ MEDIUM_ANTHROPIC_MODEL=claude-3-5-sonnet-20241022
 LARGE_ANTHROPIC_MODEL=claude-3-5-sonnet-20241022
 ```
 
-### 4. Start Services
+#### Start Eliza
+```bash
+pnpm start:debug --character="charactersProd/infinity.character.json"     
+```
 
-Open three terminal windows and run:
+Access at: http://localhost:3000
+
+## Quick Setup (All Platforms)
+
+If you want to set up all platforms at once:
 
 ```bash
+# Clone repository
+git clone <repository-url>
+cd Infinity
+
+# Install all dependencies
+cd Infinity && npm install
+cd ../DataService && yarn install
+cd ../Eliza && pnpm install --no-frozen-lockfile && pnpm build && pnpm start:debug --character="charactersProd/infinity.character.json"    
+
+# Start all services (in separate terminals)
 # Terminal 1 - DataService
 cd DataService && yarn local
 
@@ -128,34 +168,36 @@ cd Eliza && pnpm dev
 cd Infinity && npm run dev
 ```
 
-### 5. Access the System
-
-- Frontend: http://localhost:3000
-- DataService: http://localhost:9000
-- Eliza: http://localhost:3000
-
 ## Troubleshooting
 
-### Common Issues
+### Common Issues by Platform
 
-1. **DataService Connection Error**
-   - Check if port 4000 is available
-   - Verify environment variables
+#### Infinity Frontend
+- **Privy Authentication Error**
+  - Verify credentials in Privy dashboard
+  - Check redirect URLs configuration
+- **Nillion Error**
+  - Verify credentials and DIDs
+  - Check node connectivity
 
-2. **Privy Authentication Error**
-   - Verify credentials in Privy dashboard
-   - Check redirect URLs configuration
+#### DataService
+- **Connection Error**
+  - Check if port 4000 is available
+  - Verify environment variables
+  - Check database connectivity
 
-3. **Nillion Error**
-   - Verify credentials and DIDs
-   - Check node connectivity
+#### Eliza
+- **AI Model Issues**
+  - Verify Anthropic API key
+  - Check model availability
+  - Confirm environment variables
 
 ## Additional Resources
 
 - [Technical Documentation](docs/README.md)
-- [System Architecture](ARCHITECTURE.md)
-- [Plugin Guide](docs/plugin-infinity.md)
-- [Characters Documentation](docs/running-characters.md)
+- [System Architecture](docs/ARCHITECTURE.md)
+- [Plugin Guide](docs/INFINITY_PLUGINS.md)
+- [Characters Documentation](docs/INFINITY_CHARACTERS.md)
 
 ## Support
 
@@ -166,4 +208,4 @@ For setup issues:
 
 ---
 
-For detailed component documentation, refer to respective folders.
+For detailed component documentation, refer to respective platform folders.

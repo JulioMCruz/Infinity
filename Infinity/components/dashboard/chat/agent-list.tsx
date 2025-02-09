@@ -16,29 +16,37 @@ export function AgentList({ onSelectAgent }: AgentListProps) {
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
-  useEffect(() => {
-    const fetchAgents = async () => {
-      try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_ENDPOINT}/agents`)
-        if (!response.ok) throw new Error('Failed to fetch agents')
-        const data = await response.json()
-        setAgents(data.agents)
-      } catch (err) {
-        setError('Failed to load agents')
-        console.error('Error fetching agents:', err)
-      } finally {
-        setIsLoading(false)
-      }
+  const fetchAgents = async () => {
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_ENDPOINT}/agents`)
+      if (!response.ok) throw new Error('Failed to fetch agents')
+      const data = await response.json()
+      setAgents(data.agents)
+      setError(null)
+    } catch (err) {
+      setError('Failed to load agents')
+      console.error('Error fetching agents:', err)
+    } finally {
+      setIsLoading(false)
     }
+  }
 
+  useEffect(() => {
+    // Initial fetch
     fetchAgents()
-  }, [])
 
-  if (isLoading) {
+    // Set up interval for periodic refresh
+    const intervalId = setInterval(fetchAgents, 10000) // 10 seconds
+
+    // Cleanup interval on component unmount
+    return () => clearInterval(intervalId)
+  }, []) // Empty dependency array means this effect runs once on mount
+
+  if (isLoading && agents.length === 0) {
     return <div className="text-center p-4">Loading agents...</div>
   }
 
-  if (error) {
+  if (error && agents.length === 0) {
     return <div className="text-center text-red-500 p-4">{error}</div>
   }
 

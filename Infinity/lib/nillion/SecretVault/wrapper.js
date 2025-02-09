@@ -99,30 +99,44 @@ export class SecretVaultWrapper {
    * @returns {Promise<object>} Response data
    */
   async makeRequest(nodeUrl, endpoint, token, payload, method = 'POST') {
+    console.log("*** making request to ***: ", nodeUrl);
+    console.log(" With token ***: ", token);
 
-    console.log("*** making request to ***", nodeUrl);
+    try {
+      const response = await fetch(`${nodeUrl}/api/v1/${endpoint}`, {
+        method,
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: method === 'GET' ? null : JSON.stringify(payload),
+      });
 
-    const response = await fetch(`${nodeUrl}/api/v1/${endpoint}`, {
-      method,
-      headers: {
-        Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-      body: method === 'GET' ? null : JSON.stringify(payload),
-      agent: new (require('https').Agent)({
-        rejectUnauthorized: false
-      })
-    });
+      if (!response.ok) {
+        console.log('🔴 HTTP Error:', {
+          status: response.status,
+          statusText: response.statusText,
+          url: response.url,
+          headers: Object.fromEntries(response.headers),
+        });
+        const text = await response.text();
+        console.log('🔴 Error Response Body:', text);
+        throw new Error(`HTTP error! status: ${response.status}, body: ${text}`);
+      }
 
-    console.log("*** response ***", response);
-
-    if (!response.ok) {
-      const text = await response.text();
-      throw new Error(`HTTP error! status: ${response.status}, body: ${text}`);
+      return await response.json();
+    } catch (error) {
+      if (error.name === 'TypeError' && error.message.includes('fetch')) {
+        console.log('🔴 Connection Error:', {
+          message: error.message,
+          nodeUrl,
+          endpoint,
+          method,
+        });
+      }
+      throw error;
     }
-
-    return await response.json();
   }
 
   /**

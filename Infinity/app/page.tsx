@@ -15,24 +15,27 @@ export default function Page() {
   const evaluateLogin = async () => {
     try {
 
-      const wallet = user?.wallet?.address || ''
-      console.log('🚀 ~ evaluateLogin ~ wallet:', wallet)
+      // const wallet = user?.wallet?.address || ''
+      // console.log('🚀 ~ evaluateLogin ~ wallet:', wallet)
 
-      const response = await fetch('/api/user/exists', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ wallet: wallet }),
-      })
-      const data = await response.json()
-      console.log('🚀 ~ evaluateLogin ~ data:', data)
+      // const response = await fetch('/api/user/exists', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify({ wallet: wallet }),
+      // })
+      // const data = await response.json()
+      // console.log('🚀 ~ evaluateLogin ~ data:', data)
 
-      if (data.exists) {
-        router.push('/dashboard')
-      } else {
-        router.push('/dashboard/profile')
-      }
+      // if (data.exists) {
+      //   router.push('/dashboard')
+      // } else {
+      //   router.push('/dashboard/profile')
+      // }
+
+      router.push('/dashboard')
+
     } catch (error) {
       console.error('Error checking user existence:', error)
     }

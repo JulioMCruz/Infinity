@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
+    "@nillion/nilql": "^0.0.0-alpha.10",
     "@privy-io/react-auth": "^2.3.0",
     "@privy-io/server-auth": "^1.18.7",
     "@radix-ui/react-accordion": "^1.2.2",
@@ -42,6 +43,7 @@
     "@radix-ui/react-toggle": "^1.1.1",
     "@radix-ui/react-toggle-group": "^1.1.1",
     "@radix-ui/react-tooltip": "^1.1.6",
+    "@tanstack/react-query": "^5.66.0",
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "autoprefixer": "^10.4.20",
@@ -67,8 +69,7 @@
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
     "vaul": "^0.9.6",
-    "zod": "^3.24.1",
-    "@nillion/nilql": "^0.0.0-alpha.10"    
+    "zod": "^3.24.1"
   },
   "devDependencies": {
     "@types/node": "^22",

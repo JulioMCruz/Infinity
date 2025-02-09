@@ -18,7 +18,7 @@ const initialMessages: Message[] = [
   },
 ]
 
-export function ChatInterface() {
+export function ChatInterface({ agentId }: { agentId: string }) {
   const [messages, setMessages] = useState<Message[]>(initialMessages)
   const [input, setInput] = useState("")
   const [isLoading, setIsLoading] = useState(false)
@@ -38,7 +38,7 @@ export function ChatInterface() {
   const sendMessage = async (message: string) => {
     try {
       const response = await fetch(
-        `${NEXT_PUBLIC_SERVER_ENDPOINT}/${NEXT_PUBLIC_AGENT_ID}/message`,
+        `${NEXT_PUBLIC_SERVER_ENDPOINT}/${agentId}/message`,
         {
           method: "POST",
           headers: {

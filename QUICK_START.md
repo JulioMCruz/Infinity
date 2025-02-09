@@ -48,19 +48,58 @@ cp .env.example .env
 
 Required variables:
 ```env
-# Privy
-PRIVY_APP_ID=<your-app-id>
-PRIVY_CLIENT_ID=<your-client-id>
+########################################################
+#### INFINITY ELIZA CONFIGURATION                            ####
+########################################################
+SERVER_ENDPOINT=http://localhost:3001
 
-# Nillion
-NEXT_PUBLIC_NILLION_ORG_SK=<your-org-sk>
-NEXT_PUBLIC_NILLION_ORG_DID=<your-org-did>
-NEXT_PUBLIC_NILLION_NODE1_URL=<node1-url>
-NEXT_PUBLIC_NILLION_NODE1_DID=<node1-did>
-NEXT_PUBLIC_NILLION_NODE2_URL=<node2-url>
-NEXT_PUBLIC_NILLION_NODE2_DID=<node2-did>
-NEXT_PUBLIC_NILLION_NODE3_URL=<node3-url>
-NEXT_PUBLIC_NILLION_NODE3_DID=<node3-did>
+###############################################################################################
+#### INFINITY ELIZA Plugin [@elizaos/plugin-sales, @elizaos/plugin-insights] Configuration ####
+###############################################################################################
+# Infinity DataService
+BACKEND_DATA_ENDPOINT=http://localhost:9000
+
+###############################################################################################
+#### INFINITY ELIZA Plugin [@elizaos/plugin-infinity-agentkit] Configuration ####
+###############################################################################################
+# Coinbase AgentKit
+CDP_API_KEY_NAME=
+CDP_API_KEY_PRIVATE_KEY=
+CDP_AGENT_KIT_NETWORK=base-sepolia # Optional: Defaults to base-sepolia
+
+###############################################################################################
+#### INFINITY ELIZA Plugin [@elizaos/plugin-infinity] Configuration                        ####
+###############################################################################################
+#CONTRACT ADRESSES
+INFINITY_PROMOTION_FACTORY_CONTRACT_ADDRESS=0x2C92aB970eFAAD5bcD8E327232DAF840821f334c
+EVM_PRIVATE_KEY=
+EVM_PROVIDER_URL=https://sepolia.base.org
+EVM_CHAIN_NAME=baseSepolia
+###############################################################################################
+#### INFINITY ELIZA Plugin [@elizaos/plugin-infinity-privy-nillion] Configuration                        ####
+###############################################################################################
+
+#Privy
+PRIVY_APP_ID=
+PRIVY_APP_SECRET=
+
+# Nillion 
+NILLION_ORG_SK=
+NILLION_ORG_DID=
+
+NILLION_NODE1_URL=
+NILLION_NODE1_DID=
+
+NILLION_NODE2_URL=
+NILLION_NODE2_DID=
+
+NILLION_NODE3_URL=
+NILLION_NODE3_DID=
+
+NILLION_SALE_SCHEMA_ID=
+
+POSTGRES_URL=
+
 ```
 
 #### Start Service
@@ -149,7 +188,7 @@ If you want to set up all platforms at once:
 
 ```bash
 # Clone repository
-git clone <repository-url>
+git clone [<repository-url>](https://github.com/JulioMCruz/Infinity)
 cd Infinity
 
 # Install all dependencies 

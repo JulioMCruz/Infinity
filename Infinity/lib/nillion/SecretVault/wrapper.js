@@ -2,6 +2,7 @@ import { createJWT, ES256KSigner } from 'did-jwt';
 import { Buffer } from 'buffer';
 import { NilQLWrapper } from '../nilQl/wrapper.js';
 import { v4 as uuidv4 } from 'uuid';
+import fetch from 'node-fetch';
 /**
  * SecretVaultWrapper manages distributed data storage across multiple nodes.
  * It handles node authentication, data distribution, and uses NilQLWrapper
@@ -106,6 +107,9 @@ export class SecretVaultWrapper {
         Accept: 'application/json',
       },
       body: method === 'GET' ? null : JSON.stringify(payload),
+      agent: new (require('https').Agent)({
+        rejectUnauthorized: false
+      })
     });
 
     if (!response.ok) {

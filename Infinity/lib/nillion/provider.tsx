@@ -94,6 +94,7 @@ class NillionAccess {
       throw error;
     }
   }
+  
   // Funtion to read a user profile from Nillion DB
   public static async readUserProfile(userWallet: string): Promise<UserProfile> {
     try {

@@ -1,0 +1,52 @@
+{
+	"info": {
+		"_postman_id": "7b486eaa-ddbf-46ac-8a04-022138c918fe",
+		"name": "EthAgentic",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7997707"
+	},
+	"item": [
+		{
+			"name": "/api/v1/eth-agentic/sales",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9000/api/v1/eth-agentic/sales",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"api",
+						"v1",
+						"eth-agentic",
+						"sales"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v1/eth-agentic/insights",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9000/api/v1/eth-agentic/insights",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"api",
+						"v1",
+						"eth-agentic",
+						"insights"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
